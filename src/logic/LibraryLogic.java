@@ -63,7 +63,8 @@ public class LibraryLogic {
 		String ausgabe = "Kein Kunde gefunden!";
 		try{
 			Kunde k = dataAccess.getKundeById(kundeID);
-			ausgabe =	k.getname();
+			
+			ausgabe =	k.getString();
 		}catch (Exception e){}
 		
 		return ausgabe;
