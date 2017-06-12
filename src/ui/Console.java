@@ -19,7 +19,7 @@ public class Console {
 		logic = new LibraryLogic();
 		sc = new Scanner(System.in);
 	}
-	
+
 	// --------------------------------------------------------------------------------------------------------------------
 
 	public static void main(String[] args) throws Exception {
@@ -78,7 +78,7 @@ public class Console {
 			}
 		} while (count == 0);
 	}
-	
+
 	// --------------------------------------------------------------------------------------------------------------------
 
 	public static void addKunde() {
@@ -145,7 +145,7 @@ public class Console {
 	public void ausleihenRuckgabeById() {
 
 	}
-	
+
 	// --------------------------------------------------------------------------------------------------------------------
 
 	public static void changeAdress() {
@@ -166,11 +166,10 @@ public class Console {
 
 		System.out.print("Kunden-ID: ");
 		long kundeIDNeu = sc.nextLong();
-		
 
 		logic.changeAdress(strasseNeu, hnrNeu, plzNeu, ortNeu, kundeIDNeu);
 	}
-	
+
 	// --------------------------------------------------------------------------------------------------------------------
 
 	public static void showKundeById() {
@@ -180,10 +179,14 @@ public class Console {
 		logic.searchKunde(id);
 
 	}
-	
+
 	// --------------------------------------------------------------------------------------------------------------------
 
 	public static void showMediumById() {
+
+		System.out.print("ID des Mediums angeben: ");
+		Long id = sc.nextLong();
+		logic.searchMedien(id);
 
 	}
 
