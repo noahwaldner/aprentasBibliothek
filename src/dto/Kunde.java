@@ -117,8 +117,10 @@ public class Kunde {
 		vorname = newVal;
 	}
 	
-	public String getString(k ){
-		
+	public String getString(Kunde k){
+		String s = "";
+		s = k.getid() + k.getname() + k.getvorname() + k.getgeburtsjahr() + k.getstrasse() + k.gethnr() + k.getplz() + k.getort(); 
+		return s;	
 	}
 
 }
