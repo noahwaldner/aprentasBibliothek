@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.Scanner;
+
 import logic.LibraryLogic;
 
 /**
@@ -9,42 +11,117 @@ import logic.LibraryLogic;
  */
 public class Console {
 
-	private LibraryLogic logic;
+	private static LibraryLogic logic;
 
+	public static void addKunde() {
 
-	public void finalize() throws Throwable {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Name: ");
+		String nameEinlesen = sc.nextLine();
+
+		System.out.println("Vorname: ");
+		String vornameEinlesen = sc.nextLine();
+		
+		System.out.println("Strasse: ");
+		String strasseEinlesen = sc.nextLine();
+
+		System.out.println("Ort: ");
+		String ortEinlesen = sc.nextLine();
+
+		System.out.println("PLZ: ");
+		int plzEinlesen = sc.nextInt();
+
+		System.out.println("Hausnummer: ");
+		int hnrEinlesen = sc.nextInt();
+
+		System.out.println("Geburtsjahr: ");
+		int geburtsjahrEinlesen = sc.nextInt();
+		
+		System.out.println("ID: ");
+		long idEinlesen = sc.nextLong();
+
+		logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, idEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
+				strasseEinlesen, vornameEinlesen);
+		
+		sc.close();
+	}
+
+	public static void addMedium() {
 
 	}
 
-	public void addKunde(){
+	public void ausleihenRuckgabeById() {
 
 	}
 
-	public void addMedium(){
+	public static void changeAdress() {
 
 	}
+	
 
-	public void ausleihenRuckgabeById(){
+	public static void main(String[] args) {
 
+		int count = 0;
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Bibliothek");
+		System.out.println("");
+		System.out.println("1 für Mitarbeiter, 2 für Kunde: ");
+		int benutzer = sc.nextInt();
+		int aufgabe;
+
+		do {
+			switch (benutzer) {
+
+			case 1:
+				System.out.println("1 um Kunde hinzuzufügen, 2 um Medium hinzuzufügen, 3 um eine Adresse zu aendern, 4 um Kunde anzuzeigen, 5 um Medium anzuzeigen.");
+				aufgabe = sc.nextInt();
+				switch (aufgabe) {
+				case 1: addKunde();
+				break;
+				
+				case 2: addMedium();
+				break;
+				
+				case 3: changeAdress();
+				break;
+				
+				case 4: showKundeById();
+				break;
+				
+				case 5: showMediumById();
+				}
+
+				count++;
+				break;
+
+			case 2:
+				;
+				count++;
+				break;
+
+			default:
+				System.out.println("Dies ist eine ungueltige Nummer, bitte geben Sie eine gueltige Nummer ein.");
+				System.out.println("1 für Mitarbeiter, 2 für Kunde: ");
+				benutzer = sc.nextInt();
+
+			}
+		} while (count == 0);
+		sc.close();
 	}
 
-	public void changeAdress(){
-
+	public static void showKundeById() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("ID des Kunden angeben: ");
+		long id = sc.nextLong();
+		logic.searchKunde(id);
+		
+		sc.close();		
 	}
 
-	/**
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args){
-
-	}
-
-	public void showKundeById(){
-
-	}
-
-	public void showMediumById(){
+	public static void showMediumById() {
 
 	}
 

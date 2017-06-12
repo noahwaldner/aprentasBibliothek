@@ -10,7 +10,7 @@ public class Kunde {
 
 	private int geburtsjahr;
 	private int hnr;
-	private int id;
+	private long id;
 	private String name;
 	private String ort;
 	private int plz;
@@ -29,7 +29,7 @@ public class Kunde {
 		return hnr;
 	}
 
-	public int getid(){
+	public long getid(){
 		return id;
 	}
 

@@ -17,62 +17,47 @@ public class LibraryLogic {
 		dataAccess = new LibraryDAO();
 	}
 
-	/**
-	 * 
-	 * @param k
-	 */
+
+
+	public boolean addKunde(int geburtsjahr, int hnr, long id, String name, String ort, int plz, String strasse, String vorname) {
+		return (false);
+	}
+
 	public boolean addKunde(Kunde k){
 		
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param m
-	 */
-	public boolean addMedien(Medium m){
+	
+	public boolean addMedien(short altersfreigabe, String autor,  String genre, int ID, String ISBN, String standortCode, String titel){
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param m
-	 * @param kundeID
-	 */
+	
 	public boolean ausleihenRuckgabe(Medium m, Long kundeID){
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param street
-	 * @param hnr
-	 * @param plz
-	 * @param ort
-	 * @param kundeID
-	 */
+
 	public boolean changeAdress(String street, int hnr, short plz, String ort, Long kundeID){
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param kundeID
-	 */
+	
 	public String searchKunde(Long kundeID){
 		String ausgabe = "Kein Kunde gefunden!";
 		try{
 			Kunde k = dataAccess.getKundeById(kundeID);
 			ausgabe =	k.getname();
-		}catch (Exception e){}
+		}catch (Exception e){
+			
+		}
 		
 		return ausgabe;
+
 	}
 
-	/**
-	 * 
-	 * @param mediumID
-	 */
+	
 	public Medium searchMedien(Long mediumID){
 		return null;
 	}
