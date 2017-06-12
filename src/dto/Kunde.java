@@ -117,9 +117,13 @@ public class Kunde {
 		vorname = newVal;
 	}
 	
-	public String getString(Kunde k){
+	public String getString(){
 		String s = "";
+<<<<<<< HEAD
 		s = k.getid() +"\n"+ k.getname() + k.getvorname()+"\n" + k.getstrasse() + k.gethnr()+"\n" + k.getplz() + k.getort() +"\n"+ k.getgeburtsjahr(); 
+=======
+		s = getid() + getname() + getvorname() + getgeburtsjahr() + getstrasse() + gethnr() + getplz() + getort(); 
+>>>>>>> branch 'master' of https://github.com/noahwaldner/aprentasBibliothek.git
 		return s;	
 	}
 
