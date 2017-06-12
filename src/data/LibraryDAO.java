@@ -77,7 +77,7 @@ public class LibraryDAO {
 	 * 
 	 * @param kundenid
 	 */
-	public Kunde getKundeById(Long kundenid){
+	public Kunde getKundeById(Long kundenid) throws Exception{
 		
 		Kunde k = new Kunde();
 		

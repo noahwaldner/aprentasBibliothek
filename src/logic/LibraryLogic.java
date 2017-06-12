@@ -14,7 +14,7 @@ public class LibraryLogic {
 	private LibraryDAO dataAccess;
 
 	public LibraryLogic(){
-
+		dataAccess = new LibraryDAO();
 	}
 
 	/**
@@ -22,6 +22,7 @@ public class LibraryLogic {
 	 * @param k
 	 */
 	public boolean addKunde(Kunde k){
+		
 		return false;
 	}
 
@@ -58,8 +59,14 @@ public class LibraryLogic {
 	 * 
 	 * @param kundeID
 	 */
-	public Kunde searchKunde(Long kundeID){
-		return null;
+	public String searchKunde(Long kundeID){
+		String ausgabe = "Kein Kunde gefunden!";
+		try{
+			Kunde k = dataAccess.getKundeById(kundeID);
+			ausgabe =	k.getname();
+		}catch (Exception e){}
+		
+		return ausgabe;
 	}
 
 	/**
