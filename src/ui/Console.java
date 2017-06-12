@@ -10,12 +10,15 @@ import logic.LibraryLogic;
  * @created 12-Jun-2017 09:46:49
  */
 public class Console {
+	
+	static Scanner sc;
+	public Console() {
+		sc = new Scanner(System.in);
+	}
 
 	private static LibraryLogic logic;
 
 	public static void addKunde() {
-
-		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Name: ");
 		String nameEinlesen = sc.nextLine();
@@ -43,8 +46,6 @@ public class Console {
 
 		logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, idEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
 				strasseEinlesen, vornameEinlesen);
-		
-		sc.close();
 	}
 
 	public static void addMedium() {
@@ -112,13 +113,11 @@ public class Console {
 	}
 
 	public static void showKundeById() {
-		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("ID des Kunden angeben: ");
 		long id = sc.nextLong();
 		logic.searchKunde(id);
-		
-		sc.close();		
+			
 	}
 
 	public static void showMediumById() {
