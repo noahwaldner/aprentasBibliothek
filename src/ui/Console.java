@@ -43,30 +43,30 @@ public class Console {
 				aufgabe = sc.nextInt();
 				switch (aufgabe) {
 				case 1:
-					addKunde();
+					c.addKunde();
 					break;
 
 				case 2:
-					addMedium();
+					c.addMedium();
 					break;
 
 				case 3:
-					changeAdress();
+					c.changeAdress();
 					break;
 
 				case 4:
-					showKundeById();
+					c.showKundeById();
 					break;
 
 				case 5:
-					showMediumById();
+					c.showMediumById();
 				}
 
 				count++;
 				break;
 
-			case 2:
-				;
+			case 2:	
+				c.ausleihenRuckgabeById();
 				count++;
 				break;
 
@@ -81,7 +81,7 @@ public class Console {
 
 	// --------------------------------------------------------------------------------------------------------------------
 
-	public static void addKunde() {
+	public void addKunde() {
 
 		System.out.print("Name: ");
 		String nameEinlesen = sc.nextLine();
@@ -114,7 +114,7 @@ public class Console {
 
 	// --------------------------------------------------------------------------------------------------------------------
 
-	public static void addMedium() {
+	public void addMedium() {
 
 		System.out.print("Titel: ");
 		String titelEinlesen = sc.nextLine();
@@ -142,13 +142,18 @@ public class Console {
 				standortEinlesen, titelEinlesen);
 	}
 
+	// --------------------------------------------------------------------------------------------------------------------
+	
 	public void ausleihenRuckgabeById() {
-
+		
+		System.out.print("ID des Mediums eingeben \n: ");
+		int id = sc.nextInt();
+		
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
 
-	public static void changeAdress() {
+	public void changeAdress() {
 
 		System.out.print("Neuer Ort: ");
 		String ortNeu = sc.nextLine();
@@ -172,22 +177,20 @@ public class Console {
 
 	// --------------------------------------------------------------------------------------------------------------------
 
-	public static void showKundeById() {
+	public void showKundeById() {
 
 		System.out.print("ID des Kunden angeben: ");
 		Long id = sc.nextLong();
 		logic.searchKunde(id);
-
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
 
-	public static void showMediumById() {
+	public void showMediumById() {
 
 		System.out.print("ID des Mediums angeben: ");
 		Long id = sc.nextLong();
 		logic.searchMedien(id);
-
 	}
 
 }
