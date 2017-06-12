@@ -17,55 +17,32 @@ public class LibraryLogic {
 
 	}
 
-	/**
-	 * 
-	 * @param k
-	 */
-	public boolean addKunde(Kunde k){
+
+	public boolean addKunde(int geburtsjahr, int hnr, long id, String name, String ort, int plz, String strasse, String vorname){
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param m
-	 */
-	public boolean addMedien(Medium m){
+	
+	public boolean addMedien(short altersfreigabe, String autor,  String genre, int ID, String ISBN, String standortCode, String titel){
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param m
-	 * @param kundeID
-	 */
+	
 	public boolean ausleihenRuckgabe(Medium m, Long kundeID){
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param street
-	 * @param hnr
-	 * @param plz
-	 * @param ort
-	 * @param kundeID
-	 */
+
 	public boolean changeAdress(String street, int hnr, short plz, String ort, Long kundeID){
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param kundeID
-	 */
+
 	public Kunde searchKunde(Long kundeID){
 		return null;
 	}
 
-	/**
-	 * 
-	 * @param mediumID
-	 */
+	
 	public Medium searchMedien(Long mediumID){
 		return null;
 	}
