@@ -29,7 +29,7 @@ public class LibraryLogic {
 	}
 
 	
-	public boolean addMedien(short altersfreigabe, String autor,  String genre, int ID, String ISBN, String standortCode, String titel){
+	public boolean addMedien(short altersfreigabe, String autor,  String genre, long ID, String ISBN, String standortCode, String titel){
 		return false;
 	}
 
@@ -39,7 +39,7 @@ public class LibraryLogic {
 	}
 
 
-	public boolean changeAdress(String street, int hnr, short plz, String ort, Long kundeID){
+	public boolean changeAdress(String street, int hnr, int plz, String ort, Long kundeID){
 		return false;
 	}
 
