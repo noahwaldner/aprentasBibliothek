@@ -44,7 +44,7 @@ public class Console {
 		logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, idEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
 				strasseEinlesen, vornameEinlesen);
 		
-		sc.close();
+		sc.close(); 
 	}
 
 	public static void addMedium() {
