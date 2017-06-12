@@ -49,7 +49,10 @@ public class LibraryDAO {
 	 * 
 	 * @param newKunde
 	 */
-	public boolean addKunde(Kunde newKunde){
+	public boolean addKunde(Kunde newKunde) throws Exception {
+		
+		Boolean success = false;
+		
 		String name = newKunde.getname();
 		String vorname = newKunde.getvorname();
 		String strasse = newKunde.getstrasse();
@@ -74,13 +77,14 @@ public class LibraryDAO {
 	        preparedStatement.executeUpdate();
 			
 			
-			
+			success = true;
 			}catch (Exception e) {
 	            throw e; 
 	        } finally {
 	            close();
 	        }
 		
+		return success;
 		
 	}
 
