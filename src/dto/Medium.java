@@ -20,9 +20,6 @@ public class Medium {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 
 	public short getaltersfreigabe(){
 		return altersfreigabe;

@@ -11,9 +11,6 @@ public class Console {
 
 	private LibraryLogic logic;
 
-	public Console(){
-
-	}
 
 	public void finalize() throws Throwable {
 

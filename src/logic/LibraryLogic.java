@@ -11,7 +11,11 @@ import dto.Medium;
  */
 public class LibraryLogic {
 
+	private LibraryDAO dataAccess;
 
+	public LibraryLogic(){
+
+	}
 
 	/**
 	 * 

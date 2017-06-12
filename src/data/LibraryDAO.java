@@ -1,6 +1,9 @@
 package data;
 
 
+import dto.Kunde;
+import dto.Medium;
+
 /**
  * @author aprentas
  * @version 1.0
@@ -9,10 +12,6 @@ package data;
 public class LibraryDAO {
 
 	public LibraryDAO(){
-
-	}
-
-	public void finalize() throws Throwable {
 
 	}
 
