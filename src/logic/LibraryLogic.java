@@ -39,7 +39,7 @@ public class LibraryLogic {
 	}
 
 
-	public boolean changeAdress(String street, int hnr, short plz, String ort, Long kundeID){
+	public boolean changeAdress(String street, int hnr, int plz, String ort, Long kundeID){
 		return false;
 	}
 
