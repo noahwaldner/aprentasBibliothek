@@ -1,9 +1,10 @@
+package dto;
 
 
 /**
  * @author aprentas
  * @version 1.0
- * @created 09-Jun-2017 14:52:33
+ * @created 12-Jun-2017 09:46:49
  */
 public class Kunde {
 
@@ -20,9 +21,6 @@ public class Kunde {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public int getgeburtsjahr(){
 		return geburtsjahr;
 	}
@@ -118,4 +116,5 @@ public class Kunde {
 	public void setvorname(String newVal){
 		vorname = newVal;
 	}
-}//end Kunde
+
+}

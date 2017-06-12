@@ -1,19 +1,21 @@
-package Data;
+package data;
+
 
 /**
  * @author aprentas
  * @version 1.0
- * @created 09-Jun-2017 14:52:33
+ * @created 12-Jun-2017 09:46:49
  */
-public class DataAccess {
+public class LibraryDAO {
 
-	public DataAccess(){
+	public LibraryDAO(){
 
 	}
 
 	public void finalize() throws Throwable {
 
 	}
+
 	/**
 	 * 
 	 * @param newKunde
@@ -36,8 +38,9 @@ public class DataAccess {
 	 * @param hnr
 	 * @param plz
 	 * @param ort
+	 * @param kundeID
 	 */
-	public boolean changeAdress(String street, int hnr, short plz, String ort){
+	public boolean changeAdress(String street, int hnr, short plz, String ort, Long kundeID){
 		return false;
 	}
 
@@ -56,4 +59,5 @@ public class DataAccess {
 	public Medium getMediumById(Long mediumid){
 		return null;
 	}
-}//end Data.DataAccess
+
+}

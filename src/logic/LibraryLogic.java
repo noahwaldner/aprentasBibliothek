@@ -1,19 +1,18 @@
-package Management;
+package logic;
+
+import data.LibraryDAO;
+import dto.Kunde;
+import dto.Medium;
 
 /**
  * @author aprentas
  * @version 1.0
- * @created 09-Jun-2017 14:52:32
+ * @created 12-Jun-2017 09:46:49
  */
-public class Management {
+public class LibraryLogic {
 
-	public Management(){
 
-	}
 
-	public void finalize() throws Throwable {
-
-	}
 	/**
 	 * 
 	 * @param k
@@ -35,7 +34,7 @@ public class Management {
 	 * @param m
 	 * @param kundeID
 	 */
-	public boolean ausleihen(Medium m, Long kundeID){
+	public boolean ausleihenRuckgabe(Medium m, Long kundeID){
 		return false;
 	}
 
@@ -45,16 +44,9 @@ public class Management {
 	 * @param hnr
 	 * @param plz
 	 * @param ort
+	 * @param kundeID
 	 */
-	public boolean changeAdress(String street, int hnr, short plz, String ort){
-		return false;
-	}
-
-	/**
-	 * 
-	 * @param m
-	 */
-	public boolean ruckgeben(Medium m){
+	public boolean changeAdress(String street, int hnr, short plz, String ort, Long kundeID){
 		return false;
 	}
 
@@ -73,4 +65,5 @@ public class Management {
 	public Medium searchMedien(Long mediumID){
 		return null;
 	}
-}//end Management
+
+}

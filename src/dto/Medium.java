@@ -1,9 +1,10 @@
+package dto;
 
 
 /**
  * @author aprentas
  * @version 1.0
- * @created 09-Jun-2017 14:52:34
+ * @created 12-Jun-2017 09:46:49
  */
 public class Medium {
 
@@ -12,7 +13,7 @@ public class Medium {
 	private String genre;
 	private int ID;
 	private String ISBN;
-	private int standortCode;
+	private String standortCode;
 	private String titel;
 
 	public Medium(){
@@ -22,6 +23,7 @@ public class Medium {
 	public void finalize() throws Throwable {
 
 	}
+
 	public short getaltersfreigabe(){
 		return altersfreigabe;
 	}
@@ -105,4 +107,5 @@ public class Medium {
 	public void settitel(String newVal){
 		titel = newVal;
 	}
-}//end Medium
+
+}
