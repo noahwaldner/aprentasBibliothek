@@ -116,5 +116,9 @@ public class Kunde {
 	public void setvorname(String newVal){
 		vorname = newVal;
 	}
+	
+	public String getString(k ){
+		
+	}
 
 }

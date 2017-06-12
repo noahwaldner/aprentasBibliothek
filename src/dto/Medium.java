@@ -41,7 +41,7 @@ public class Medium {
 		return ISBN;
 	}
 
-	public int getstandortCode(){
+	public String getstandortCode(){
 		return standortCode;
 	}
 
@@ -93,7 +93,7 @@ public class Medium {
 	 * 
 	 * @param newVal
 	 */
-	public void setstandortCode(int newVal){
+	public void setstandortCode(String newVal){
 		standortCode = newVal;
 	}
 
