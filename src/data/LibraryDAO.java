@@ -93,7 +93,26 @@ public class LibraryDAO {
 	 * @param newMedium
 	 */
 	public boolean addMedium(Medium newMedium){
-		return false;
+
+		Boolean success = false;
+		
+
+		
+		try{
+			
+			preparedStatement = connect.prepareStatement("INSERT INTO mydb.medien"
+					+ "(name, vorname, strasse, hnr, plz, ort, geburtsjahr) VALUES"
+					+ "(?,?,?,?,?,?,?,?)");
+	      
+			
+			success = true;
+			}catch (Exception e) {
+	            throw e; 
+	        } finally {
+	            close();
+	        }
+		
+		return success;
 	}
 
 	/**
