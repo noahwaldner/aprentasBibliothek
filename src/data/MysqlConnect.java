@@ -56,7 +56,7 @@ public class MysqlConnect {
             
 
 		        } catch (Exception e) {
-		            throw e;
+		            throw e; 
 		        } finally {
 		            close();
 		        }
