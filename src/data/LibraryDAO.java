@@ -50,7 +50,38 @@ public class LibraryDAO {
 	 * @param newKunde
 	 */
 	public boolean addKunde(Kunde newKunde){
-		return false;
+		String name = newKunde.getname();
+		String vorname = newKunde.getvorname();
+		String strasse = newKunde.getstrasse();
+		int hnr = newKunde.gethnr();
+		int plz = newKunde.getplz();
+		String ort = newKunde.getort();
+		int geburtsjahr = newKunde.getgeburtsjahr();
+		
+		
+		try{
+			
+			preparedStatement = connect.prepareStatement("INSERT INTO mydb.kunden"
+					+ "(name, vorname, strasse, hnr, plz, ort, geburtsjahr) VALUES"
+					+ "(?,?,?,?,?,?,?,?)");
+	        preparedStatement.setString(1, name);
+	        preparedStatement.setString(2, vorname);
+	        preparedStatement.setString(3, strasse);
+	        preparedStatement.setInt(4, hnr);
+	        preparedStatement.setInt(5, plz);
+	        preparedStatement.setString(6, ort);   
+	        preparedStatement.setInt(7, geburtsjahr);
+	        preparedStatement.executeUpdate();
+			
+			
+			
+			}catch (Exception e) {
+	            throw e; 
+	        } finally {
+	            close();
+	        }
+		
+		
 	}
 
 	/**
