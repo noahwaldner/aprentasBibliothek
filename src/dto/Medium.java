@@ -11,7 +11,7 @@ public class Medium {
 	private short altersfreigabe;
 	private String autor;
 	private String genre;
-	private int ID;
+	private long ID;
 	private String ISBN;
 	private String standortCode;
 	private String titel;
@@ -33,7 +33,7 @@ public class Medium {
 		return genre;
 	}
 
-	public int getID(){
+	public long getID(){
 		return ID;
 	}
 
