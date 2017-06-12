@@ -147,7 +147,7 @@ public class Console {
 	public void ausleihenRuckgabeById() {
 		
 		System.out.print("ID des Mediums eingeben \n: ");
-		int id = sc.nextInt();
+		int id = sc.nextInt(); 
 		
 	}
 
