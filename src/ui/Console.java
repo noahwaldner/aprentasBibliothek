@@ -133,7 +133,7 @@ public class Console {
 		String standortEinlesen = sc.nextLine();
 
 		System.out.print("ID: ");
-		int idEinlesen = sc.nextInt();
+		long idEinlesen = sc.nextLong();
 
 		System.out.print("Altersfreigabe: ");
 		short altersfreigabeEinlesen = sc.nextShort();
