@@ -12,14 +12,12 @@ import logic.LibraryLogic;
 public class Console {
 	
 	static Scanner sc;
-	public Console() {
-		sc = new Scanner(System.in);
-	}
 
 	private static LibraryLogic logic;
 	
 	public Console() throws Exception {
 		logic = new LibraryLogic();
+		sc = new Scanner(System.in);
 	}
 
 	public static void addKunde() {
