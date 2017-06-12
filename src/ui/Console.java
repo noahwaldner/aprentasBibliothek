@@ -17,6 +17,10 @@ public class Console {
 	}
 
 	private static LibraryLogic logic;
+	
+	public Console() throws Exception {
+		logic = new LibraryLogic();
+	}
 
 	public static void addKunde() {
 
@@ -115,7 +119,7 @@ public class Console {
 	public static void showKundeById() {
 		
 		System.out.println("ID des Kunden angeben: ");
-		long id = sc.nextLong();
+		Long id = sc.nextLong();
 		logic.searchKunde(id);
 			
 	}

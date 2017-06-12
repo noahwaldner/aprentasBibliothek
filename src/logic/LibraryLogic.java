@@ -13,7 +13,7 @@ public class LibraryLogic {
 
 	private LibraryDAO dataAccess;
 
-	public LibraryLogic(){
+	public LibraryLogic() throws Exception{
 		dataAccess = new LibraryDAO();
 	}
 
@@ -48,14 +48,14 @@ public class LibraryLogic {
 		String ausgabe = "Kein Kunde gefunden!";
 		try{
 			Kunde k = dataAccess.getKundeById(kundeID);
-			ausgabe =	k.getname();
-		}catch (Exception e){
 			
-		}
+			ausgabe =	k.getString();
+		}catch (Exception e){}
 		
 		return ausgabe;
-
 	}
+	
+			
 
 	
 	public Medium searchMedien(Long mediumID){
