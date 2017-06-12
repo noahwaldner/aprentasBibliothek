@@ -25,7 +25,7 @@ public class LibraryDAO {
     
     
 
-	public LibraryDAO(){
+	public LibraryDAO() throws Exception{
 		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");

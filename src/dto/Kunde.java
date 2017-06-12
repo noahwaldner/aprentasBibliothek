@@ -119,7 +119,7 @@ public class Kunde {
 	
 	public String getString(Kunde k){
 		String s = "";
-		s = k.getid() + k.getname() + k.getvorname() + k.getgeburtsjahr() + k.getstrasse() + k.gethnr() + k.getplz() + k.getort(); 
+		s = k.getid() +"\n"+ k.getname() + k.getvorname()+"\n" + k.getstrasse() + k.gethnr()+"\n" + k.getplz() + k.getort() +"\n"+ k.getgeburtsjahr(); 
 		return s;	
 	}
 
