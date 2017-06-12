@@ -13,7 +13,7 @@ public class LibraryLogic {
 
 	private LibraryDAO dataAccess;
 
-	public LibraryLogic(){
+	public LibraryLogic() throws Exception{
 		dataAccess = new LibraryDAO();
 	}
 

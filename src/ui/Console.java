@@ -12,6 +12,10 @@ import logic.LibraryLogic;
 public class Console {
 
 	private static LibraryLogic logic;
+	
+	public Console() throws Exception {
+		logic = new LibraryLogic();
+	}
 
 	public static void addKunde() {
 
@@ -115,7 +119,7 @@ public class Console {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("ID des Kunden angeben: ");
-		long id = sc.nextLong();
+		Long id = sc.nextLong();
 		logic.searchKunde(id);
 		
 		sc.close();		
