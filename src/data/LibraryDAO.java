@@ -60,16 +60,16 @@ public class LibraryDAO {
 		int hnr = newKunde.gethnr();
 		String plz = newKunde.getplz();
 		String ort = newKunde.getort();
-		String geburtsjahr = newKunde.getgeburtsjahr();
+		int geburtsjahr = newKunde.getgeburtsjahr();
 
 		System.out.println("trying to add...");
 		
 		try{
 			
-			preparedStatement = connect.prepareStatement("mydb.call sp_kundeEinfuegen(?,?,?,?,?,?,?);");
+			preparedStatement = connect.prepareStatement("call sp_kundeEinfuegen(?,?,?,?,?,?,?);");
 	        preparedStatement.setString(1, name);
 	        preparedStatement.setString(2, vorname);
-	        preparedStatement.setString(3, geburtsjahr);
+	        preparedStatement.setInt(3, geburtsjahr);
 	        preparedStatement.setString(4, strasse);
 	        preparedStatement.setInt(5, hnr);
 	        preparedStatement.setString(6, ort);

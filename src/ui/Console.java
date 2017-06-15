@@ -107,8 +107,8 @@ public class Console {
 		int hnrEinlesen = sc.nextInt();
 
 		System.out.print("Geburtsjahr: ");
-		String geburtsjahrEinlesen = sc.nextLine();
-        geburtsjahrEinlesen = sc.nextLine();
+		int geburtsjahrEinlesen = sc.nextInt();
+        geburtsjahrEinlesen = sc.nextInt();
 
 
 

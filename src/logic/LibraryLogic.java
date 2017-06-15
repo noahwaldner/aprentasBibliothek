@@ -19,7 +19,7 @@ public class LibraryLogic {
 
 
 
-	public boolean addKunde(String geburtsjahr, int hnr, String name, String ort, String plz, String strasse, String vorname) throws Exception {
+	public boolean addKunde(int geburtsjahr, int hnr, String name, String ort, String plz, String strasse, String vorname) throws Exception {
 		try{
 			Kunde k = new Kunde();
 			k.setgeburtsjahr(geburtsjahr);
