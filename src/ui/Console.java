@@ -11,6 +11,8 @@ import logic.LibraryLogic;
  */
 public class Console {
 
+
+
 	static Scanner sc;
 
 	private static LibraryLogic logic;
