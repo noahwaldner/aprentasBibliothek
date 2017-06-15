@@ -18,14 +18,24 @@ public class LibraryLogic {
 	}
 
 
+	
+	public boolean addKunde(int geburtsjahr, int hnr, String name, String ort, String plz, String strasse, String vorname) throws Exception {
+		try{
+			Kunde k = new Kunde();
+			k.setgeburtsjahr(geburtsjahr);
+			k.sethnr(hnr);
+			k.setname(name);
+			k.setort(ort);
+			k.setplz(plz);
+			k.setstrasse(strasse);
+			k.setvorname(vorname);
+			Boolean success = dataAccess.addKunde(k);
 
-	public boolean addKunde(int geburtsjahr, int hnr, String name, String ort, int plz, String strasse, String vorname) {
-		return (false);
-	}
+			return (success);
+		}catch (Exception e){
 
-	public boolean addKunde(Kunde k){
-		
-		return false;
+			return false;
+		}
 	}
 
 	
