@@ -85,13 +85,12 @@ public class Console {
 
 	public void addKunde() throws Exception {
 
-
-
 		System.out.print("Name: ");
-		String nameEinlesen = sc.nextLine();
+        String nameEinlesen;
+        String pause = sc.nextLine();
         nameEinlesen = sc.nextLine();
 
-		System.out.print("Vorname: ");
+        System.out.print("Vorname: ");
 		String vornameEinlesen = sc.nextLine();
 
 		System.out.print("Strasse: ");
@@ -108,13 +107,15 @@ public class Console {
 
 		System.out.print("Geburtsjahr: ");
 		int geburtsjahrEinlesen = sc.nextInt();
-        geburtsjahrEinlesen = sc.nextInt();
+        //geburtsjahrEinlesen = sc.nextInt();
 
+        System.out.print("step 0");
 
 
         try {
+            System.out.print("step 1");
             Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen, strasseEinlesen, vornameEinlesen);
-
+            System.out.print("step 2");
             if (success){
                 System.out.println("Kunde hinzugefügt");
             }else {

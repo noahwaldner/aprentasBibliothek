@@ -51,6 +51,8 @@ public class LibraryDAO {
 	 * @param newKunde
 	 */
 	public boolean addKunde(Kunde newKunde) throws Exception {
+
+        System.out.println("start of routine addKunde()...");
 		
 		Boolean success = false;
 
@@ -66,7 +68,7 @@ public class LibraryDAO {
 		
 		try{
 			
-			preparedStatement = connect.prepareStatement("call sp_kundeEinfuegen(?,?,?,?,?,?,?);");
+			preparedStatement = connect.prepareStatement("mydb.call sp_kundeEinfuegen(?,?,?,?,?,?,?);");
 	        preparedStatement.setString(1, name);
 	        preparedStatement.setString(2, vorname);
 	        preparedStatement.setInt(3, geburtsjahr);
@@ -74,11 +76,13 @@ public class LibraryDAO {
 	        preparedStatement.setInt(5, hnr);
 	        preparedStatement.setString(6, ort);
 	        preparedStatement.setString(7, plz);
-	        preparedStatement.executeUpdate();
+            System.out.println("vor dem Execute...");
+            preparedStatement.executeUpdate();
 
 			System.out.println("Kunde hinzugefügt");
 			success = true;
 			}catch (Exception e) {
+            System.out.println("Fehler");
 				System.out.println(e.getMessage());
 	            success = false;
 	        } finally {
@@ -159,7 +163,7 @@ public class LibraryDAO {
 		
 		k.setname(resultSet.getString("name"));
 		k.setvorname(resultSet.getString("vorname"));
-		k.setgeburtsjahr(resultSet.getString("geburtsjahr"));
+		k.setgeburtsjahr(resultSet.getInt("geburtsjahr"));
 		k.setort(resultSet.getString("ort"));
 		k.setstrasse(resultSet.getString("strasse"));
 		k.sethnr(resultSet.getInt("hnr"));
