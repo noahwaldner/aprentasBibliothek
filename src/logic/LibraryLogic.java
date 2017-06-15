@@ -75,7 +75,6 @@ public class LibraryLogic {
 	}
 
 
-	
 	public String searchKunde(Long kundeID){
 		String ausgabe = "Kein Kunde gefunden!";
 		try{
