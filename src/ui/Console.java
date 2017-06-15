@@ -107,10 +107,7 @@ public class Console {
 		System.out.print("Geburtsjahr: ");
 		int geburtsjahrEinlesen = sc.nextInt();
 
-		System.out.print("ID: ");
-		long idEinlesen = sc.nextLong();
-
-		logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, idEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
+		logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
 				strasseEinlesen, vornameEinlesen);
 	}
 
