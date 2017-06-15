@@ -54,7 +54,7 @@ public class LibraryLogic {
 		
 		return true;
 
-	}
+	} 
 
 	
 	public boolean ausleihenRuckgabe(Medium m, Long kundeID){
