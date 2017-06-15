@@ -109,11 +109,14 @@ public class Console {
 		System.out.print("Geburtsjahr: ");
 		int geburtsjahrEinlesen = sc.nextInt();
 
+
+		logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen, strasseEinlesen, vornameEinlesen);
+
 		System.out.print("ID: ");
 		long idEinlesen = sc.nextLong();
 
         try {
-            Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, idEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
+            Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
                     strasseEinlesen, vornameEinlesen);
 
             if (success){
