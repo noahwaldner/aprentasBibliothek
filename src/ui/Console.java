@@ -83,7 +83,9 @@ public class Console {
 
 	// --------------------------------------------------------------------------------------------------------------------
 
-	public void addKunde() {
+	public void addKunde() throws Exception {
+
+
 
 		System.out.print("Name: ");
 		String nameEinlesen = sc.nextLine();
@@ -99,7 +101,7 @@ public class Console {
 		String ortEinlesen = sc.nextLine();
 
 		System.out.print("PLZ: ");
-		int plzEinlesen = sc.nextInt();
+		String plzEinlesen = sc.nextLine();
 
 		System.out.print("Hausnummer: ");
 		int hnrEinlesen = sc.nextInt();
@@ -110,8 +112,20 @@ public class Console {
 		System.out.print("ID: ");
 		long idEinlesen = sc.nextLong();
 
-		logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, idEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
-				strasseEinlesen, vornameEinlesen);
+        try {
+            Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, idEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
+                    strasseEinlesen, vornameEinlesen);
+
+            if (success){
+                System.out.println("Kunde hinzugefügt");
+            }else {
+                System.out.println("Fehler");
+            }
+        }catch (Exception e){
+            System.out.println("Fehler beim hinzufügen! " + e);
+        }
+
+
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------

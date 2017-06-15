@@ -13,7 +13,7 @@ public class Kunde {
 	private long id;
 	private String name;
 	private String ort;
-	private int plz;
+	private String plz;
 	private String strasse;
 	private String vorname;
 
@@ -41,7 +41,7 @@ public class Kunde {
 		return ort;
 	}
 
-	public int getplz(){
+	public String getplz(){
 		return plz;
 	}
 
@@ -73,7 +73,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setid(int newVal){
+	public void setid(long newVal){
 		id = newVal;
 	}
 
@@ -97,7 +97,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setplz(int newVal){
+	public void setplz(String newVal){
 		plz = newVal;
 	}
 

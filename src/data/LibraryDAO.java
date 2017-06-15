@@ -39,7 +39,7 @@ public class LibraryDAO {
 			}catch (Exception e) {
 	            throw e; 
 	        } finally {
-	            close();
+	           // close();
 	        }
 			
 		} 
@@ -58,29 +58,29 @@ public class LibraryDAO {
 		String vorname = newKunde.getvorname();
 		String strasse = newKunde.getstrasse();
 		int hnr = newKunde.gethnr();
-		int plz = newKunde.getplz();
+		String plz = newKunde.getplz();
 		String ort = newKunde.getort();
 		int geburtsjahr = newKunde.getgeburtsjahr();
-		
+
+		System.out.println("trying to add...");
 		
 		try{
 			
-			preparedStatement = connect.prepareStatement("INSERT INTO mydb.kunden"
-					+ "(name, vorname, strasse, hnr, plz, ort, geburtsjahr) VALUES"
-					+ "(?,?,?,?,?,?,?,?)");
+			preparedStatement = connect.prepareStatement("call sp_kundeEinfuegen(?,?,?,?,?,?,?)");
 	        preparedStatement.setString(1, name);
 	        preparedStatement.setString(2, vorname);
-	        preparedStatement.setString(3, strasse);
-	        preparedStatement.setInt(4, hnr);
-	        preparedStatement.setInt(5, plz);
+	        preparedStatement.setInt(3, geburtsjahr);
+	        preparedStatement.setString(4, strasse);
+	        preparedStatement.setInt(5, hnr);
 	        preparedStatement.setString(6, ort);
-	        preparedStatement.setInt(7, geburtsjahr);
+	        preparedStatement.setString(7, plz);
 	        preparedStatement.executeUpdate();
-			
-			
+
+			System.out.println("Kunde hinzugefügt");
 			success = true;
 			}catch (Exception e) {
-	            throw e; 
+				System.out.println(e.getMessage());
+	            success = false;
 	        } finally {
 	            close();
 	        }
@@ -163,7 +163,7 @@ public class LibraryDAO {
 		k.setort(resultSet.getString("ort"));
 		k.setstrasse(resultSet.getString("strasse"));
 		k.sethnr(resultSet.getInt("hnr"));
-		k.setplz(resultSet.getInt("plz"));
+		k.setplz(resultSet.getString("plz"));
 		k.setid(resultSet.getInt("id_kunde"));
 		
 		
