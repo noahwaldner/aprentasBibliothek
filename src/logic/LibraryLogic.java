@@ -19,12 +19,11 @@ public class LibraryLogic {
 
 
 
-	public boolean addKunde(int geburtsjahr, int hnr, long id, String name, String ort, String plz, String strasse, String vorname) throws Exception {
+	public boolean addKunde(String geburtsjahr, int hnr, String name, String ort, String plz, String strasse, String vorname) throws Exception {
 		try{
 			Kunde k = new Kunde();
 			k.setgeburtsjahr(geburtsjahr);
 			k.sethnr(hnr);
-			k.setid(id);
 			k.setname(name);
 			k.setort(ort);
 			k.setplz(plz);
@@ -42,12 +41,11 @@ public class LibraryLogic {
 
 
 	
-	public boolean addMedien(short altersfreigabe, String autor,  String genre, int ID, String ISBN, String standortCode, String titel){
+	public boolean addMedien(short altersfreigabe, String autor,  String genre, String ISBN, String standortCode, String titel){
 		Medium m = new Medium();
 		m.setaltersfreigabe(altersfreigabe);
 		m.setautor(autor);
 		m.setgenre(genre);
-		m.setID(ID);
 		m.setISBN(ISBN);
 		m.setstandortCode(standortCode);
 		m.settitel(titel);
@@ -94,7 +92,7 @@ public class LibraryLogic {
 		try{
 			Medium m = dataAccess.getMediumById(mediumID);
 			
-			ausgabe =	m.getString();
+			//ausgabe =	m.getString();
 		}catch (Exception e){}
 		
 		return ausgabe;

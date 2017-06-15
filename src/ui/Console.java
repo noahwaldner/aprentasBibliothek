@@ -89,7 +89,7 @@ public class Console {
 
 		System.out.print("Name: ");
 		String nameEinlesen = sc.nextLine();
-		sc.nextLine();
+        nameEinlesen = sc.nextLine();
 
 		System.out.print("Vorname: ");
 		String vornameEinlesen = sc.nextLine();
@@ -107,17 +107,13 @@ public class Console {
 		int hnrEinlesen = sc.nextInt();
 
 		System.out.print("Geburtsjahr: ");
-		int geburtsjahrEinlesen = sc.nextInt();
+		String geburtsjahrEinlesen = sc.nextLine();
+        geburtsjahrEinlesen = sc.nextLine();
 
 
-		logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen, strasseEinlesen, vornameEinlesen);
-
-		System.out.print("ID: ");
-		long idEinlesen = sc.nextLong();
 
         try {
-            Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
-                    strasseEinlesen, vornameEinlesen);
+            Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen, strasseEinlesen, vornameEinlesen);
 
             if (success){
                 System.out.println("Kunde hinzugefügt");
@@ -151,13 +147,12 @@ public class Console {
 		System.out.print("Standort-Code: ");
 		String standortEinlesen = sc.nextLine();
 
-		System.out.print("ID: ");
-		long idEinlesen = sc.nextLong();
+
 
 		System.out.print("Altersfreigabe: ");
 		short altersfreigabeEinlesen = sc.nextShort();
 
-		logic.addMedien(altersfreigabeEinlesen, autorEinlesen, genreEinlesen, idEinlesen, ISBNEinlesen,
+		logic.addMedien(altersfreigabeEinlesen, autorEinlesen, genreEinlesen, ISBNEinlesen,
 				standortEinlesen, titelEinlesen);
 	}
 
@@ -179,7 +174,7 @@ public class Console {
 		sc.nextLine();
 
 		System.out.print("Neuer PLZ: ");
-		int plzNeu = sc.nextInt();
+		String plzNeu = sc.nextLine();
 
 		System.out.print("Neue Strasse: ");
 		String strasseNeu = sc.nextLine();

@@ -8,7 +8,7 @@ package dto;
  */
 public class Kunde {
 
-	private int geburtsjahr;
+	private String geburtsjahr;
 	private int hnr;
 	private long id;
 	private String name;
@@ -21,7 +21,7 @@ public class Kunde {
 
 	}
 
-	public int getgeburtsjahr(){
+	public String getgeburtsjahr(){
 		return geburtsjahr;
 	}
 
@@ -57,7 +57,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setgeburtsjahr(int newVal){
+	public void setgeburtsjahr(String newVal){
 		geburtsjahr = newVal;
 	}
 
