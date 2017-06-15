@@ -52,7 +52,7 @@ public class LibraryDAO {
 	public boolean addKunde(Kunde newKunde) throws Exception {
 		
 		Boolean success = false;
-		
+
 		String name = newKunde.getname();
 		String vorname = newKunde.getvorname();
 		String strasse = newKunde.getstrasse();
@@ -72,7 +72,7 @@ public class LibraryDAO {
 	        preparedStatement.setString(3, strasse);
 	        preparedStatement.setInt(4, hnr);
 	        preparedStatement.setInt(5, plz);
-	        preparedStatement.setString(6, ort);   
+	        preparedStatement.setString(6, ort);
 	        preparedStatement.setInt(7, geburtsjahr);
 	        preparedStatement.executeUpdate();
 			
@@ -95,16 +95,31 @@ public class LibraryDAO {
 	public boolean addMedium(Medium newMedium){
 
 		Boolean success = false;
-		
+
+		Long id = newMedium.getID()
+        int altersfreigabe = newMedium.getaltersfreigabe();
+        String autor = newMedium.getautor();
+        String genre = newMedium.getgenre();
+        String titel = newMedium.gettitel();
+        String herausgeber = newMedium.getautor();
+        String ean = newMedium.getISBN();
+        String standort_code = newMedium.getstandortCode();
 
 		
 		try{
 			
 			preparedStatement = connect.prepareStatement("INSERT INTO mydb.medien"
-					+ "(name, vorname, strasse, hnr, plz, ort, geburtsjahr) VALUES"
-					+ "(?,?,?,?,?,?,?,?)");
-	      
-			
+					+ "(id_medium, titel, genre, altersfreigabe, herausgeber, ean, standort_code) VALUES"
+					+ "(?,?,?,?,?,?,?)");
+
+			preparedStatement.setString(1,id);
+            preparedStatement.setString(2, titel);
+			preparedStatement.setString(6, genre);
+			preparedStatement.setInt(4, altersfreigabe);
+			preparedStatement.setString(5, herausgeber);
+			preparedStatement.setString(6, ean);
+			preparedStatement.setString(7, standort_code);
+			preparedStatement.executeUpdate()
 			success = true;
 			}catch (Exception e) {
 	            throw e; 
@@ -168,8 +183,44 @@ public class LibraryDAO {
 	 * @param mediumid
 	 */
 	public Medium getMediumById(Long mediumid){
-		return null;
+
+		Medium m = new Medium();
+
+		try{
+
+			preparedStatement = connect.prepareStatement("select * from mydb.kunden where id_medium= ? ; ");
+			preparedStatement.setString(1, mediumid.toString());
+			preparedStatement.executeUpdate();
+
+			m.setID(resultSet.getString("id_medium"));
+			m.setaltersfreigabe(resultSet.getInt("altersfreigabe"));
+			m.setautor(resultSet.getString("herausgeber"));
+			m.setgenre(resultSet.getString("genre"));
+			m.setISBN(resultSet.getString("ean"));
+			m.setstandortCode(resultSet.getInt("standort_code"));
+			m.settitel(resultSet.getString("titel"));
+
+
+
+
+		}catch (Exception e) {
+			throw e;
+		} finally {
+			close();
+		}
+
+		return m;
+
+
 	}
+
+
+
+
+
+
+
+
 
 	private void close() {
         try {

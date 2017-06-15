@@ -7,11 +7,10 @@ package dto;
  * @created 12-Jun-2017 09:46:49
  */
 public class Medium {
-
+	private long ID;
 	private short altersfreigabe;
 	private String autor;
 	private String genre;
-	private long ID;
 	private String ISBN;
 	private String standortCode;
 	private String titel;
