@@ -83,7 +83,7 @@ public class LibraryLogic {
 			ausgabe =	k.getString();
 		}catch (Exception e){}
 		
-		return ausgabe;
+		return ausgabe; 
 	}
 	
 			
