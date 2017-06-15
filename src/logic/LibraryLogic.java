@@ -40,14 +40,20 @@ public class LibraryLogic {
 
 	}
 
-	public boolean addKunde(Kunde k){
-		
-		return false;
-	}
 
 	
-	public boolean addMedien(short altersfreigabe, String autor,  String genre, long ID, String ISBN, String standortCode, String titel){
-		return false;
+	public boolean addMedien(short altersfreigabe, String autor,  String genre, int ID, String ISBN, String standortCode, String titel){
+		Medium m = new Medium();
+		m.setaltersfreigabe(altersfreigabe);
+		m.setautor(autor);
+		m.setgenre(genre);
+		m.setID(ID);
+		m.setISBN(ISBN);
+		m.setstandortCode(standortCode);
+		m.settitel(titel);
+		
+		return true;
+
 	}
 
 	
@@ -56,9 +62,18 @@ public class LibraryLogic {
 	}
 
 
-	public boolean changeAdress(String street, int hnr, int plz, String ort, Long kundeID){
-		return false;
+	public boolean changeAdress(String street, int hnr, String plz, String ort, Long kundeID){
+		try {
+			Kunde k = dataAccess.getKundeById(kundeID);
+			k.setstrasse(street);
+			k.sethnr(hnr);
+			k.setplz(plz);
+			k.setort(ort);
+		} catch (Exception e) {
+		}
+		return true;
 	}
+
 
 	
 	public String searchKunde(Long kundeID){
@@ -75,8 +90,17 @@ public class LibraryLogic {
 			
 
 	
-	public Medium searchMedien(Long mediumID){
-		return null;
+	public String searchMedien(Long mediumID){
+		String ausgabe = "Kein Kunde gefunden!";
+		try{
+			Medium m = dataAccess.getMediumById(mediumID);
+			
+			ausgabe =	m.getString();
+		}catch (Exception e){}
+		
+		return ausgabe;
+		
 	}
+
 
 }

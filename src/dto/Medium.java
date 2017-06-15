@@ -103,5 +103,7 @@ public class Medium {
 	public void settitel(String newVal){
 		titel = newVal;
 	}
+	
+	
 
 }
