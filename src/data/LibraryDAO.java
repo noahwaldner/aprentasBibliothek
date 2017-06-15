@@ -28,7 +28,7 @@ public class LibraryDAO {
 	public LibraryDAO() throws Exception{
 		
 		try{
-			System.out.print("Connecting to Database...");
+			System.out.println("Connecting to Database...");
 			Class.forName("com.mysql.jdbc.Driver");
 	        // Setup the connection with the DB
 	        connect = DriverManager

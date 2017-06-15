@@ -30,7 +30,7 @@ public class LibraryLogic {
 
 	
 	public boolean addMedien(short altersfreigabe, String autor,  String genre, long ID, String ISBN, String standortCode, String titel){
-		return false;
+		
 	}
 
 	

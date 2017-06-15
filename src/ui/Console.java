@@ -32,7 +32,7 @@ public class Console {
 
 		System.out.print("Bibliothek");
 		System.out.print("");
-		System.out.print("1 für Mitarbeiter, 2 für Kunde: ");
+		System.out.print("1 fuer Mitarbeiter, 2 fuer Kunde: ");
 		int benutzer = sc.nextInt();
 		int aufgabe;
 
@@ -41,7 +41,7 @@ public class Console {
 
 			case 1:
 				System.out.print(
-						"1 um Kunde hinzuzufügen, 2 um Medium hinzuzufügen, 3 um eine Adresse zu ändern, 4 um Kunde anzuzeigen, 5 um Medium anzuzeigen.");
+						"1 um Kunde hinzuzufuegen, 2 um Medium hinzuzufuegen, 3 um eine Adresse zu Aendern, 4 um Kunde anzuzeigen, 5 um Medium anzuzeigen.");
 				aufgabe = sc.nextInt();
 				switch (aufgabe) {
 				case 1:
@@ -74,7 +74,7 @@ public class Console {
 
 			default:
 				System.out.print("Dies ist eine ungueltige Nummer, bitte geben Sie eine gueltige Nummer ein: ");
-				System.out.print("1 für Mitarbeiter, 2 für Kunde: ");
+				System.out.print("1 fuer Mitarbeiter, 2 fuer Kunde: ");
 				benutzer = sc.nextInt();
 
 			}
