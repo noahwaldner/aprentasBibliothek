@@ -42,15 +42,23 @@ public class LibraryLogic {
 
 	
 	public boolean addMedien(short altersfreigabe, String autor,  String genre, String ISBN, String standortCode, String titel){
-		Medium m = new Medium();
-		m.setaltersfreigabe(altersfreigabe);
-		m.setautor(autor);
-		m.setgenre(genre);
-		m.setISBN(ISBN);
-		m.setstandortCode(standortCode);
-		m.settitel(titel);
-		
-		return true;
+
+		try{
+			Medium m = new Medium();
+			m.setaltersfreigabe(altersfreigabe);
+			m.setautor(autor);
+			m.setgenre(genre);
+			m.setISBN(ISBN);
+			m.setstandortCode(standortCode);
+			m.settitel(titel);
+
+			Boolean success = dataAccess.addMedium(m);
+
+			return (success);
+		}catch (Exception e){
+
+		return false;
+		}
 
 	} 
 
@@ -79,7 +87,9 @@ public class LibraryLogic {
 			Kunde k = dataAccess.getKundeById(kundeID);
 			
 			ausgabe =	k.getString();
-		}catch (Exception e){}
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
 		
 		return ausgabe; 
 	}
