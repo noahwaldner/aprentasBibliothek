@@ -335,7 +335,7 @@ public class LibraryDAO {
 
 			statement.executeUpdate("delete from mydb.tbl_ausleihe where fk_medium= " + mediumId + ";");
 
-			System.out.println("Medium wurde zur�ckgegeben");
+			System.out.println("Medium wurde zurueckgegeben");
 
 		} catch (Exception e) {
 			System.out.println("Medium nicht gefunden");
