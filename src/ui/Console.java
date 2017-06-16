@@ -189,7 +189,7 @@ public class Console {
 		System.out.print("ID des Mediums eingeben:\n ");
 		long id_medium = sc.nextInt();
 
-		//logic.ausleihenRuckgabe(id_medium, id_kunde);
+		logic.ausleihenRuckgabe(id_medium, id_kunde);
 
 	}
 
