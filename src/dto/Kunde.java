@@ -1,6 +1,5 @@
 package dto;
 
-
 /**
  * @author aprentas
  * @version 1.0
@@ -17,39 +16,39 @@ public class Kunde {
 	private String strasse;
 	private String vorname;
 
-	public Kunde(){
+	public Kunde() {
 
 	}
 
-	public int getgeburtsjahr(){
+	public int getgeburtsjahr() {
 		return geburtsjahr;
 	}
 
-	public int gethnr(){
+	public int gethnr() {
 		return hnr;
 	}
 
-	public long getid(){
+	public long getid() {
 		return id;
 	}
 
-	public String getname(){
+	public String getname() {
 		return name;
 	}
 
-	public String getort(){
+	public String getort() {
 		return ort;
 	}
 
-	public String getplz(){
+	public String getplz() {
 		return plz;
 	}
 
-	public String getstrasse(){
+	public String getstrasse() {
 		return strasse;
 	}
 
-	public String getvorname(){
+	public String getvorname() {
 		return vorname;
 	}
 
@@ -57,7 +56,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setgeburtsjahr(int newVal){
+	public void setgeburtsjahr(int newVal) {
 		geburtsjahr = newVal;
 	}
 
@@ -65,7 +64,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void sethnr(int newVal){
+	public void sethnr(int newVal) {
 		hnr = newVal;
 	}
 
@@ -73,7 +72,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setid(long newVal){
+	public void setid(long newVal) {
 		id = newVal;
 	}
 
@@ -81,7 +80,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setname(String newVal){
+	public void setname(String newVal) {
 		name = newVal;
 	}
 
@@ -89,7 +88,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setort(String newVal){
+	public void setort(String newVal) {
 		ort = newVal;
 	}
 
@@ -97,7 +96,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setplz(String newVal){
+	public void setplz(String newVal) {
 		plz = newVal;
 	}
 
@@ -105,7 +104,7 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setstrasse(String newVal){
+	public void setstrasse(String newVal) {
 		strasse = newVal;
 	}
 
@@ -113,14 +112,15 @@ public class Kunde {
 	 * 
 	 * @param newVal
 	 */
-	public void setvorname(String newVal){
+	public void setvorname(String newVal) {
 		vorname = newVal;
 	}
-	
-	public String getString(){
+
+	public String getString() {
 		String s = "";
-		s = "ID: " + getid() +"\n"+ getname() + getvorname()+"\n" + getstrasse() + gethnr()+"\n" + getplz() + getort() +"\n"+ getgeburtsjahr(); 
-		return s;	
+		s = "ID: " + getid() + "\n" + getname() + getvorname() + "\n" + getstrasse() + gethnr() + "\n" + getplz()
+				+ getort() + "\n" + getgeburtsjahr();
+		return s;
 	}
 
 }
