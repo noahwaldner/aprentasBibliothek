@@ -27,6 +27,9 @@ public class LibraryDAO {
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 
+    /**
+     *Es wird eine Verbindung zur DFatenbank über jbdc aufgebaut.
+     */
 	public LibraryDAO() throws Exception {
 
 		try {
@@ -170,6 +173,7 @@ public class LibraryDAO {
 	 * @param newPlz
 	 * @param newOrt
 	 * @param kundeID
+     * @return success
 	 */
 	public boolean changeAdress(String newStrasse, int newHnr, String newPlz, String newOrt, Long kundeID) {
 
@@ -219,8 +223,11 @@ public class LibraryDAO {
 	}
 
 	/**
-	 * 
+	 * Es ird ein Long wert eigegeben.
+     * Auf der view v_zeigeKunde auf der Datenbank wird nach einer Zeile gesucht in welcher id_kunde = die eigegebene Kunden ID ist.
+     * Es werden die Informationen aus dieser Zeile in ein Objekt des Typs Kunde gespeichert.
 	 * @param kundenid
+     * @return k
 	 */
 	public Kunde getKundeById(Long kundenid) throws Exception {
 
@@ -257,8 +264,11 @@ public class LibraryDAO {
 	}
 
 	/**
-	 * 
+	 * Es ird ein Long wert eigegeben.
+     * Auf der Tabelle tbl_medium auf der Datenbank wird nach einer Zeile gesucht in welcher id_medium = die eigegebene Medium ID ist.
+     * Es werden die Informationen aus dieser Zeile in ein Objekt des Typs Kunde gespeichert.
 	 * @param mediumid
+     *
 	 */
 	public Medium getMediumById(Long mediumid) throws Exception {
 
@@ -289,6 +299,12 @@ public class LibraryDAO {
 
 	}
 
+    /**
+     * Es wird ein werd des Typs Long eingegeben und überprüft ob ein eintrag in der Tablelle tbl_ausleihe besteht,
+     * in welchem die Spalte fk_medium = die eingegebene Medien ID ist.
+     * @param mediumId
+     * @return
+     */
 	public boolean getAusgeliehen(Long mediumId) throws Exception {
 		try {
 
@@ -309,6 +325,11 @@ public class LibraryDAO {
 
 	}
 
+    /**
+     * Es wird ein Long wert eigegeben.
+     * Es wird der Eintrag in der Tabelle tbl_ausleihe gelöscht in  welchem fk_medium = die eigegebene Medien ID ist.
+     * @param mediumId
+     */
 	public void ruckgeben(Long mediumId) throws Exception {
 		try {
 
@@ -323,6 +344,13 @@ public class LibraryDAO {
 		}
 	}
 
+    /**
+     * Es werden zwei Long Werte eigegeben.
+     * Es wird ein Eintrag in der Tabelle tbl_ausleihe erstellt in welchem fk_kunde = dem eingegeben Wert KundeId und fk_kunde = dem eingegeben Wert MediumID ist.
+     * In die Spalte "adate" wird das aktuelle Datum geschrieben.
+     * @param mediumId
+     * @param kundeId
+     */
 	public void ausleihen(Long mediumId, Long kundeId) throws Exception {
 		String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
@@ -344,6 +372,9 @@ public class LibraryDAO {
 		}
 	}
 
+    /**
+     * Es wird die Datenbankverbindung geschlossen.
+     */
 	private void close() {
 		try {
 			if (resultSet != null) {
