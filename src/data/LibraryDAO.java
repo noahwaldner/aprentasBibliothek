@@ -13,7 +13,12 @@ import dto.Kunde;
 import dto.Medium;
 
 /**
- * @author aprentas
+ * Diese Klasse gewährt den Datenbankzugriff. Es werden die Informationen aus
+ * Objekte von Kunde und Medium ausgelesen und in die Datenbank geschrieben,
+ * Informationen aus der Datenbank in Objekte geschrieben oder Datebankeinträge
+ * verändert.
+ * 
+ * @author Noah Waldner
  * @version 1.0
  * @created 12-Jun-2017 09:46:49
  */
@@ -24,6 +29,9 @@ public class LibraryDAO {
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 
+	/**
+	 * Es wird eine Verbindung zur DFatenbank über jbdc aufgebaut.
+	 */
 	public LibraryDAO() throws Exception {
 
 		try {
@@ -37,14 +45,23 @@ public class LibraryDAO {
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			// close();
+
 		}
 
 	}
 
 	/**
+	 * Es wird über den Eingabeparameter ein Objekt des Typs Kunde eingegeben
+	 * welches ausgelesen wird. Es wird getestet ob schon ein Eintrag in tbl_ort
+	 * mit dem angegebenen Ort und der angegebenen Postleitzahl besteht. Falls
+	 * ja, wird die Id davon ausgelesen und zwischengespeichert. Falls nein,
+	 * wird ein neuer Eintrag gemach und die Id zwischengespeichert. Es wird ein
+	 * eintrag in tbl_kunde mit den angegebenen Werten gemacht. in die Spalte
+	 * fk_ort wird die zwischengespeicherte id geschrieben.
 	 * 
 	 * @param newKunde
+	 * @return success
+	 *
 	 */
 	public boolean addKunde(Kunde newKunde) throws Exception {
 
@@ -106,8 +123,12 @@ public class LibraryDAO {
 	}
 
 	/**
+	 * Es wird über den Eingabeparameter ein Objekt des Typs Medium eingegeben
+	 * und ausgelesen. Die ausgelesenen Werte werden in die Tabelle tbl_medium
+	 * auf der Datebank geschrieben.
 	 * 
 	 * @param newMedium
+	 * @return success
 	 */
 	public boolean addMedium(Medium newMedium) throws Exception {
 
@@ -148,51 +169,77 @@ public class LibraryDAO {
 	}
 
 	/**
-	 * 
-	 * @param street
-	 * @param hnr
-	 * @param plz
-	 * @param ort
+	 * Über die eingabeparameter die Informationen über die neue Adresse
+	 * eigegeben.
+	 *
+	 * Es wird getestet ob schon ein Eintrag in tbl_ort mit dem angegebenen Ort
+	 * und der angegebenen Postleitzahl besteht. Falls ja, wird die Id davon
+	 * ausgelesen und zwischengespeichert. Falls nein, wird ein neuer Eintrag
+	 * gemach und die Id zwischengespeichert. Es wird die Zeile in tbl_kunde wo
+	 * id_kunde = die eingegebene Kunden ID ist mit den eingegebenen Werten
+	 * geupdatet. In die Spalte fk_ort wird der zwischengespeicherte Wert
+	 * geschrieben
+	 *
+	 * @param newStrasse
+	 * @param newHnr
+	 * @param newPlz
+	 * @param newOrt
 	 * @param kundeID
+	 * @return success
 	 */
 	public boolean changeAdress(String newStrasse, int newHnr, String newPlz, String newOrt, Long kundeID) {
+
+		boolean success = false;
 		try {
 
-			preparedStatement = connect
-					.prepareStatement("UPDATE mydb.tbl_kunde SET strasse = ?, nummer = ? WHERE id_kunde = ?;");
+			resultSet = statement.executeQuery(
+					"SELECT * from mydb.tbl_ort where NAME =\"" + newOrt + "\" and plz = " + newPlz + " ;");
+			int ortid = 0;
+			if (resultSet.next()) {
+				ortid = resultSet.getInt("id_ort");
+			} else {
+
+				preparedStatement = connect.prepareStatement("insert INTO mydb.tbl_ort(name, plz) VALUES (?,?);");
+				preparedStatement.setString(1, newOrt);
+				preparedStatement.setString(2, newPlz);
+
+				preparedStatement.executeUpdate();
+
+				resultSet = statement.executeQuery(
+						"SELECT id_ort from mydb.tbl_ort where NAME =\"" + newOrt + "\" and plz = " + newPlz + " ;");
+				while (resultSet.next()) {
+					ortid = resultSet.getInt("id_ort");
+				}
+			}
+
+			preparedStatement = connect.prepareStatement(
+					"UPDATE mydb.tbl_kunde SET strasse = ?, nummer = ?, fk_ort = " + ortid + " WHERE id_kunde = ?;");
 			preparedStatement.setString(1, newStrasse);
 			preparedStatement.setInt(2, newHnr);
 			preparedStatement.setLong(3, kundeID);
 			preparedStatement.executeUpdate();
 
-			resultSet = statement.executeQuery("SELECT fk_ort from mydb.tbl_kunde where id_kunde = " + kundeID + ";");
-
-			int ortid = 0;
-			while (resultSet.next()) {
-				ortid = resultSet.getInt("fk_ort");
-			}
-
-			preparedStatement = connect.prepareStatement("Update mydb.tbl_ort SET name=?, plz=? where id_ort = ?;");
-			preparedStatement.setString(1, newOrt);
-			preparedStatement.setString(2, newPlz);
-			preparedStatement.setLong(3, ortid);
-
-			preparedStatement.executeUpdate();
 			System.out.println("Adresse geaendert!");
-			return true;
+			success = true;
 
 		} catch (Exception e) {
 			System.out.println("Kunde nicht gefunden");
-			return false;
 
 		} finally {
+
 			close();
+			return success;
 		}
 	}
 
 	/**
+	 * Es ird ein Long wert eigegeben. Auf der view v_zeigeKunde auf der
+	 * Datenbank wird nach einer Zeile gesucht in welcher id_kunde = die
+	 * eigegebene Kunden ID ist. Es werden die Informationen aus dieser Zeile in
+	 * ein Objekt des Typs Kunde gespeichert.
 	 * 
 	 * @param kundenid
+	 * @return k
 	 */
 	public Kunde getKundeById(Long kundenid) throws Exception {
 
@@ -229,8 +276,13 @@ public class LibraryDAO {
 	}
 
 	/**
+	 * Es ird ein Long wert eigegeben. Auf der Tabelle tbl_medium auf der
+	 * Datenbank wird nach einer Zeile gesucht in welcher id_medium = die
+	 * eigegebene Medium ID ist. Es werden die Informationen aus dieser Zeile in
+	 * ein Objekt des Typs Kunde gespeichert.
 	 * 
 	 * @param mediumid
+	 *
 	 */
 	public Medium getMediumById(Long mediumid) throws Exception {
 
@@ -261,6 +313,14 @@ public class LibraryDAO {
 
 	}
 
+	/**
+	 * Es wird ein werd des Typs Long eingegeben und überprüft ob ein eintrag
+	 * in der Tablelle tbl_ausleihe besteht, in welchem die Spalte fk_medium =
+	 * die eingegebene Medien ID ist.
+	 * 
+	 * @param mediumId
+	 * @return
+	 */
 	public boolean getAusgeliehen(Long mediumId) throws Exception {
 		try {
 
@@ -281,12 +341,19 @@ public class LibraryDAO {
 
 	}
 
+	/**
+	 * Es wird ein Long wert eigegeben. Es wird der Eintrag in der Tabelle
+	 * tbl_ausleihe gelöscht in welchem fk_medium = die eigegebene Medien ID
+	 * ist.
+	 * 
+	 * @param mediumId
+	 */
 	public void ruckgeben(Long mediumId) throws Exception {
 		try {
 
 			statement.executeUpdate("delete from mydb.tbl_ausleihe where fk_medium= " + mediumId + ";");
 
-			System.out.println("Medium wurde zur�ckgegeben");
+			System.out.println("Medium wurde zurueckgegeben");
 
 		} catch (Exception e) {
 			System.out.println("Medium nicht gefunden");
@@ -295,6 +362,15 @@ public class LibraryDAO {
 		}
 	}
 
+	/**
+	 * Es werden zwei Long Werte eigegeben. Es wird ein Eintrag in der Tabelle
+	 * tbl_ausleihe erstellt in welchem fk_kunde = dem eingegeben Wert KundeId
+	 * und fk_kunde = dem eingegeben Wert MediumID ist. In die Spalte "adate"
+	 * wird das aktuelle Datum geschrieben.
+	 * 
+	 * @param mediumId
+	 * @param kundeId
+	 */
 	public void ausleihen(Long mediumId, Long kundeId) throws Exception {
 		String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
@@ -316,6 +392,9 @@ public class LibraryDAO {
 		}
 	}
 
+	/**
+	 * Es wird die Datenbankverbindung geschlossen.
+	 */
 	private void close() {
 		try {
 			if (resultSet != null) {
