@@ -48,7 +48,7 @@ public class Console {
 
 			case 1:
 				System.out.print(
-						" 1 um Kunde hinzuzufuegen, \n 2 um Medium hinzuzufuegen,\n 3 um eine Adresse zu Aendern,\n 4 um Kunde anzuzeigen,\n 5 um Medium anzuzeigen,\n 6 um ein Medium auszuleihen/zurueckgeben\n, 7 um ein Medium zu loeschen,\n 8 um ein Kunden zz loeschen");
+						" 1 um Kunde hinzuzufuegen, \n 2 um Medium hinzuzufuegen,\n 3 um eine Adresse zu Aendern,\n 4 um Kunde anzuzeigen,\n 5 um Medium anzuzeigen,\n 6 um ein Medium auszuleihen/zurueckgeben,\n 7 um ein Medium zu loeschen,\n 8 um ein Kunden zu loeschen.");
 				aufgabe = sc.nextInt();
 				switch (aufgabe) {
 				case 1:
@@ -289,7 +289,7 @@ public class Console {
 
 	public void deleteKunde() {
 
-		System.out.print("ID des Kundens ,welches man löschen möchte, angeben: ");
+		System.out.print("ID des Kundens ,welchen man löschen möchte, angeben: ");
 		Long id = sc.nextLong();
 		logic.deleteKunde(id);
 	}
