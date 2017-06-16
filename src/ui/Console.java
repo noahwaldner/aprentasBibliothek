@@ -141,8 +141,9 @@ public class Console {
 	public void addMedium() {
 
 		System.out.print("Titel: ");
+        String pause = sc.nextLine();
 		String titelEinlesen = sc.nextLine();
-		sc.nextLine();
+
 
 		System.out.print("Autor: ");
 		String autorEinlesen = sc.nextLine();
@@ -204,7 +205,8 @@ public class Console {
 
 		System.out.print("ID des Kunden angeben: ");
 		Long id = sc.nextLong();
-		logic.searchKunde(id);
+		String result = logic.searchKunde(id);
+		System.out.print(result);
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
@@ -213,7 +215,8 @@ public class Console {
 
 		System.out.print("ID des Mediums angeben: ");
 		Long id = sc.nextLong();
-		logic.searchMedien(id);
+        String result = logic.searchMedien(id);
+        System.out.print(result);
 	}
 
 }

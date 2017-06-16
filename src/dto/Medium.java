@@ -104,6 +104,13 @@ public class Medium {
 		titel = newVal;
 	}
 	
+	public String getString(){
+		String s = "";
+		s = "ID: " + getID() +"\n"+ gettitel()+"\n" + getautor()+"\n" + getgenre()+"\n" + getaltersfreigabe()+"\n" + getstandortCode()+"\n" + getISBN(); 
+		return s;	
+	}
+
+	
 	
 
 }

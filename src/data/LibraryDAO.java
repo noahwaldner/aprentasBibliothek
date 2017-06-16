@@ -67,7 +67,7 @@ public class LibraryDAO {
 		System.out.println("trying to add...");
 		
 		try{
-			
+			/*
 			preparedStatement = connect.prepareStatement("mydb.call sp_kundeEinfuegen(?,?,?,?,?,?,?);");
 	        preparedStatement.setString(1, name);
 	        preparedStatement.setString(2, vorname);
@@ -78,6 +78,31 @@ public class LibraryDAO {
 	        preparedStatement.setString(7, plz);
             System.out.println("vor dem Execute...");
             preparedStatement.executeUpdate();
+			 */
+
+            preparedStatement = connect.prepareStatement("insert INTO mydb.tbl_ort(name, plz) VALUES (?,?);");
+            preparedStatement.setString(1, ort);
+            preparedStatement.setString(2, plz);
+            System.out.println("vor dem Execute...");
+            preparedStatement.executeUpdate();
+
+            resultSet = statement.executeQuery("SELECT id_ort from mydb.tbl_ort where NAME =\""+ort+"\" and plz = "+plz+" ;");
+            int ortid = 0;
+            while (resultSet.next()){
+                ortid = resultSet.getInt("id_ort");
+            }
+
+
+            preparedStatement = connect.prepareStatement("insert INTO mydb.tbl_kunde(name, vorname, geburtsjahr, strasse, nummer,fk_ort) VALUES (?,?,?,?,?,?);");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, vorname);
+            preparedStatement.setInt(3, geburtsjahr);
+            preparedStatement.setString(4, strasse);
+            preparedStatement.setInt(5, hnr);
+            preparedStatement.setInt(6, ortid);
+
+            preparedStatement.executeUpdate();
+
 
 			System.out.println("Kunde hinzugefügt");
 			success = true;
@@ -98,11 +123,12 @@ public class LibraryDAO {
 	 * @param newMedium
 	 */
 	public boolean addMedium(Medium newMedium) throws Exception{
+	    System.out.println("Checkpoint 1 DAO");
 
 		Boolean success = false;
 
-		Long id = newMedium.getID();
-        int altersfreigabe = newMedium.getaltersfreigabe();
+
+        Short altersfreigabe = newMedium.getaltersfreigabe();
         String autor = newMedium.getautor();
         String genre = newMedium.getgenre();
         String titel = newMedium.gettitel();
@@ -110,24 +136,27 @@ public class LibraryDAO {
         String ean = newMedium.getISBN();
         String standort_code = newMedium.getstandortCode();
 
-		
+        System.out.println("Checkpoint 2 DAO" + titel);
 		try{
 			
-			preparedStatement = connect.prepareStatement("INSERT INTO mydb.medien"
-					+ "(id_medium, titel, genre, altersfreigabe, herausgeber, ean, standort_code) VALUES"
-					+ "(?,?,?,?,?,?,?)");
+			preparedStatement = connect.prepareStatement("INSERT INTO mydb.tbl_medium"
+					+ "(standort_code, titel, genre, altersfreigabe, herausgeber, ean) VALUES"
+					+ "(?,?,?,?,?,?)");
 
-			preparedStatement.setLong(1,id);
+			preparedStatement.setString(1, standort_code);
             preparedStatement.setString(2, titel);
-			preparedStatement.setString(6, genre);
-			preparedStatement.setInt(4, altersfreigabe);
+			preparedStatement.setString(3, genre);
+			preparedStatement.setShort(4, altersfreigabe);
 			preparedStatement.setString(5, herausgeber);
 			preparedStatement.setString(6, ean);
-			preparedStatement.setString(7, standort_code);
+            System.out.println("Execute!");
 			preparedStatement.executeUpdate();
+            System.out.println("added");
 			success = true;
 			}catch (Exception e) {
-	            throw e; 
+            System.out.println(e.getMessage());
+	            throw e;
+
 	        } finally {
 	            close();
 	        }
@@ -157,23 +186,25 @@ public class LibraryDAO {
 		
 		try{
 			
-		preparedStatement = connect.prepareStatement("select * from mydb.kunden where id_kunde= ? ; ");
-        preparedStatement.setString(1, kundenid.toString());
-        preparedStatement.executeUpdate();
-		
-		k.setname(resultSet.getString("name"));
-		k.setvorname(resultSet.getString("vorname"));
-		k.setgeburtsjahr(resultSet.getInt("geburtsjahr"));
-		k.setort(resultSet.getString("ort"));
-		k.setstrasse(resultSet.getString("strasse"));
-		k.sethnr(resultSet.getInt("hnr"));
-		k.setplz(resultSet.getString("plz"));
-		k.setid(resultSet.getInt("id_kunde"));
-		
-		
+			ResultSet resultSet = statement.executeQuery("select * from mydb.v_zeigeKunde where KundenId="+kundenid+" ; ");
+			
+			if (resultSet.next()) {
+	
+				k.setname(resultSet.getString("name"));
+				k.setvorname(resultSet.getString("vorname"));
+				k.setgeburtsjahr(resultSet.getInt("geburtsjahr"));
+				k.setort(resultSet.getString("ort"));
+				k.setstrasse(resultSet.getString("strasse"));
+				k.sethnr(resultSet.getInt("Hausnummer"));
+				k.setplz(resultSet.getString("plz"));
+				k.setid(resultSet.getInt("KundenId"));
+			
+			}
 		
 		}catch (Exception e) {
-            throw e; 
+            System.out.println("Error: " + e.getMessage());
+            throw e;
+
         } finally {
             close();
         }
@@ -188,23 +219,28 @@ public class LibraryDAO {
 	 * @param mediumid
 	 */
 	public Medium getMediumById(Long mediumid) throws Exception{
+		
+		
 
 		Medium m = new Medium();
 
 		try{
 
-			preparedStatement = connect.prepareStatement("select * from mydb.kunden where id_medium= ? ; ");
-			preparedStatement.setString(1, mediumid.toString());
-			preparedStatement.executeUpdate();
+			ResultSet resultSet = statement.executeQuery("select * from mydb.tbl_medium where id_medium= "+mediumid+";");
+			
+			if (resultSet.next()) {
+				m.setID(resultSet.getInt("id_medium"));
+				m.setaltersfreigabe(resultSet.getShort("altersfreigabe"));
+				m.setautor(resultSet.getString("herausgeber"));
+				m.setgenre(resultSet.getString("genre"));
+				m.setISBN(resultSet.getString("ean"));
+				m.setstandortCode(resultSet.getString("standort_code"));
+				m.settitel(resultSet.getString("titel"));
+			}
 
-			m.setID(resultSet.getInt("id_medium"));
-			m.setaltersfreigabe(resultSet.getShort("altersfreigabe"));
-			m.setautor(resultSet.getString("herausgeber"));
-			m.setgenre(resultSet.getString("genre"));
-			m.setISBN(resultSet.getString("ean"));
-			m.setstandortCode(resultSet.getString("standort_code"));
-			m.settitel(resultSet.getString("titel"));
-
+			
+			
+			
 
 
 
