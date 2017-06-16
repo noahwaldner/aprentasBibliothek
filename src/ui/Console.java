@@ -8,13 +8,15 @@ import logic.LibraryLogic;
  * @author aprentas
  * @version 1.0
  * @created 12-Jun-2017 09:46:49
+ * 
+ *          Diese Klasse ist die direkte Schnittstelle zum Benutzer. Anhand der
+ *          Eingaben in der Konsole kann man verschiedene Funktionen wie: Kunde
+ *          hinzufügen, Medien hinzufügen, Kunden anzeigen, ... aufrufen.
+ * 
  */
 public class Console {
 
-
-
 	static Scanner sc;
-
 	private static LibraryLogic logic;
 
 	public Console() throws Exception {
@@ -23,6 +25,9 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// In der Main-Klasse wird das "Menü" der Konsole angezeigt. Hier kann man
+	// mit den Eingaben (1,2,...) alle notwendigen Funktionen, in den einzelnen
+	// Switch-Case aufrufen.
 
 	public static void main(String[] args) throws Exception {
 
@@ -67,7 +72,7 @@ public class Console {
 				count++;
 				break;
 
-			case 2:	
+			case 2:
 				c.ausleihenRuckgabeById();
 				count++;
 				break;
@@ -82,15 +87,17 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Diese Methode wird für die Erstellung eines Kundens benutzt. Zuerst werden
+	// alle Attribute abgefragt und dann weiter an die Logik übergeben.
 
 	public void addKunde() throws Exception {
 
 		System.out.print("Name: ");
-        String nameEinlesen;
-        String pause = sc.nextLine();
-        nameEinlesen = sc.nextLine();
+		String nameEinlesen;
+		String pause = sc.nextLine();
+		nameEinlesen = sc.nextLine();
 
-        System.out.print("Vorname: ");
+		System.out.print("Vorname: ");
 		String vornameEinlesen = sc.nextLine();
 
 		System.out.print("Strasse: ");
@@ -107,29 +114,30 @@ public class Console {
 
 		System.out.print("Geburtsjahr: ");
 		int geburtsjahrEinlesen = sc.nextInt();
-        //geburtsjahrEinlesen = sc.nextInt();
+		// geburtsjahrEinlesen = sc.nextInt();
 
-        System.out.print("step 0");
+		System.out.print("step 0");
 
-
-        try {
-            System.out.print("step 1");
-            Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen, strasseEinlesen, vornameEinlesen);
-            System.out.print("step 2");
-            if (success){
-                System.out.println("Kunde hinzugefÃ¼gt");
-            }else {
-                System.out.println("Fehler");
-            }
-        }catch (Exception e){
-            System.out.println("Fehler beim hinzufÃ¼gen! " + e);
-        }
-
+		try {
+			System.out.print("step 1");
+			Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
+					strasseEinlesen, vornameEinlesen);
+			System.out.print("step 2");
+			if (success) {
+				System.out.println("Kunde hinzugefÃ¼gt");
+			} else {
+				System.out.println("Fehler");
+			}
+		} catch (Exception e) {
+			System.out.println("Fehler beim hinzufÃ¼gen! " + e);
+		}
 
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
-
+	// Diese Methode wird für die Erstellung eines Mediums benutzt. Zuerst werden
+	// alle Attribute abgefragt und dann weiter an die Logik übergeben.
+	
 	public void addMedium() {
 
 		System.out.print("Titel: ");
@@ -148,22 +156,22 @@ public class Console {
 		System.out.print("Standort-Code: ");
 		String standortEinlesen = sc.nextLine();
 
-
-
 		System.out.print("Altersfreigabe: ");
 		short altersfreigabeEinlesen = sc.nextShort();
 
-		logic.addMedien(altersfreigabeEinlesen, autorEinlesen, genreEinlesen, ISBNEinlesen,
-				standortEinlesen, titelEinlesen);
+		logic.addMedien(altersfreigabeEinlesen, autorEinlesen, genreEinlesen, ISBNEinlesen, standortEinlesen,
+				titelEinlesen);
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
-	
+
 	public void ausleihenRuckgabeById() {
-		
+
+		System.out.print("ID des Kundens eingeben \n: ");
+		int id_kunde = sc.nextInt();
 		System.out.print("ID des Mediums eingeben \n: ");
-		int id = sc.nextInt(); 
-		
+		int id_medium = sc.nextInt();
+
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
