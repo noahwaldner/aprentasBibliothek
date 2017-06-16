@@ -4,6 +4,9 @@ package dto;
  * @author aprentas
  * @version 1.0
  * @created 12-Jun-2017 09:46:49
+ * 
+ * In dieser Klasse sind die Getter-Setter des Medium-Objekts.
+ * 
  */
 public class Medium {
 	private long ID;
