@@ -87,7 +87,8 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
-	// Diese Methode wird für die Erstellung eines Kundens benutzt. Zuerst werden
+	// Diese Methode wird für die Erstellung eines Kundens benutzt. Zuerst
+	// werden
 	// alle Attribute abgefragt und dann weiter an die Logik übergeben.
 
 	public void addKunde() throws Exception {
@@ -135,15 +136,15 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
-	// Diese Methode wird für die Erstellung eines Mediums benutzt. Zuerst werden
+	// Diese Methode wird für die Erstellung eines Mediums benutzt. Zuerst
+	// werden
 	// alle Attribute abgefragt und dann weiter an die Logik übergeben.
-	
+
 	public void addMedium() {
 
 		System.out.print("Titel: ");
-        String pause = sc.nextLine();
+		String pause = sc.nextLine();
 		String titelEinlesen = sc.nextLine();
-
 
 		System.out.print("Autor: ");
 		String autorEinlesen = sc.nextLine();
@@ -172,6 +173,8 @@ public class Console {
 		int id_kunde = sc.nextInt();
 		System.out.print("ID des Mediums eingeben \n: ");
 		int id_medium = sc.nextInt();
+
+		logic.ausleihenRuckgabe(id_medium, id_kunde);
 
 	}
 
@@ -215,8 +218,8 @@ public class Console {
 
 		System.out.print("ID des Mediums angeben: ");
 		Long id = sc.nextLong();
-        String result = logic.searchMedien(id);
-        System.out.print(result);
+		String result = logic.searchMedien(id);
+		System.out.print(result);
 	}
 
 }
