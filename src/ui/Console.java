@@ -128,7 +128,6 @@ public class Console {
 
 		System.out.print("Geburtsjahr: ");
 		int geburtsjahrEinlesen = sc.nextInt();
-		// geburtsjahrEinlesen = sc.nextInt();
 
 		System.out.print("step 0");
 
