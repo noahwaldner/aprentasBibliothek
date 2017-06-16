@@ -28,8 +28,8 @@ public class Console {
 
 		int count = 0;
 
-		System.out.print("Bibliothek");
-		System.out.print("");
+		System.out.println("Bibliothek");
+		System.out.println("");
 		System.out.print("1 fuer Mitarbeiter, 2 fuer Kunde: ");
 		int benutzer = sc.nextInt();
 		int aufgabe;
@@ -174,7 +174,7 @@ public class Console {
 
 		System.out.print("Neue Strasse: ");
 		String strasseNeu = sc.nextLine();
-		sc.nextLine();
+		
 
 		System.out.print("Neue Hausnummer: ");
 		int hnrNeu = sc.nextInt();
