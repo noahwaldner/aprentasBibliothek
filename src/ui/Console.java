@@ -46,7 +46,7 @@ public class Console {
 
 			case 1:
 				System.out.print(
-						"1 um Kunde hinzuzufuegen, 2 um Medium hinzuzufuegen, 3 um eine Adresse zu Aendern, 4 um Kunde anzuzeigen, 5 um Medium anzuzeigen, 6 um ein Medium auszuleihen/zurueckgeben.");
+						"1 um Kunde hinzuzufuegen, \n 2 um Medium hinzuzufuegen,\n 3 um eine Adresse zu Aendern,\n 4 um Kunde anzuzeigen,\n 5 um Medium anzuzeigen,\n 6 um ein Medium auszuleihen/zurueckgeben.");
 				aufgabe = sc.nextInt();
 				switch (aufgabe) {
 				case 1:
@@ -77,16 +77,9 @@ public class Console {
 				break;
 
 			case 2:
-				System.out.print("1 um ein Medium auszuleihen/zurueckgeben.");
-				aufgabe = sc.nextInt();
-				// eigentlich sinnlos ein Switch-Case zu machen. Jedoch k�nnte
-				// man es so noch einfach erweitern
-				switch (aufgabe) {
-				case 1:
-					c.ausleihenRuckgabeById();
-					break;
-				}
-
+				System.out.print("BenutzerID eingeben:");
+				Long benutzerid = sc.nextLong();
+				c.kundenAktion(benutzerid);
 				count++;
 				break;
 
@@ -182,7 +175,7 @@ public class Console {
 	// Mit der Eingabe von einem Kunden und dem Medium, ein Medium
 	// ausleihen/zur�ckgeben indem man die Methode in der Logik aufruft.
 
-	public void ausleihenRuckgabeById() {
+	public void ausleihenRuckgabeById() throws Exception {
 
 		System.out.print("ID des Kundens eingeben:\n ");
 		long id_kunde = sc.nextInt();
@@ -209,7 +202,6 @@ public class Console {
 
 		System.out.print("Neue Strasse: ");
 		String strasseNeu = sc.nextLine();
-
 
 		System.out.print("Neue Hausnummer: ");
 		int hnrNeu = sc.nextInt();
@@ -240,6 +232,18 @@ public class Console {
 		Long id = sc.nextLong();
 		String result = logic.searchMedien(id);
 		System.out.print(result);
+	}
+
+	public void kundenAktion(Long kundenId) throws Exception {
+
+		System.out.println("+++ MENU AUSLEIHE / RUCKGABE +++");
+		System.out.println();
+
+		System.out.print("Medien ID eingeben");
+		Long mediumId = sc.nextLong();
+
+		logic.ausleihenRuckgabe(mediumId, kundenId);
+
 	}
 
 }

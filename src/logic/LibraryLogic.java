@@ -60,9 +60,21 @@ public class LibraryLogic {
 
 	}
 
-	public boolean ausleihenRuckgabe(Medium m, Long kundeID) {
+	public boolean ausleihenRuckgabe(Long mediumId, Long kundeId) throws Exception {
+		boolean isAusgeliehen = dataAccess.getAusgeliehen(mediumId);
+		if(isAusgeliehen){
+			dataAccess.ruckgeben(mediumId);
+		}else{
+			dataAccess.ausleihen(mediumId, kundeId);
+		};
 		return false;
 	}
+	
+	
+	
+	
+	
+	
 
 	public boolean changeAdress(String street, int hnr, String plz, String ort, Long kundeID) {
 

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import dto.Kunde;
@@ -62,7 +63,7 @@ public class LibraryDAO {
 		System.out.println("trying to add...");
 
 		try {
-		
+
 			preparedStatement = connect.prepareStatement("insert INTO mydb.tbl_ort(name, plz) VALUES (?,?);");
 			preparedStatement.setString(1, ort);
 			preparedStatement.setString(2, plz);
@@ -163,15 +164,14 @@ public class LibraryDAO {
 			preparedStatement.setLong(3, kundeID);
 			preparedStatement.executeUpdate();
 
-			resultSet = statement.executeQuery("SELECT fk_ort from mydb.tbl_kunde where id_kunde = "+kundeID+";");
-			
+			resultSet = statement.executeQuery("SELECT fk_ort from mydb.tbl_kunde where id_kunde = " + kundeID + ";");
+
 			int ortid = 0;
 			while (resultSet.next()) {
 				ortid = resultSet.getInt("fk_ort");
 			}
 
-			preparedStatement = connect
-					.prepareStatement("Update mydb.tbl_ort SET name=?, plz=? where id_ort = ?;");
+			preparedStatement = connect.prepareStatement("Update mydb.tbl_ort SET name=?, plz=? where id_ort = ?;");
 			preparedStatement.setString(1, newOrt);
 			preparedStatement.setString(2, newPlz);
 			preparedStatement.setLong(3, ortid);
@@ -258,6 +258,60 @@ public class LibraryDAO {
 
 		return m;
 
+	}
+
+	public boolean getAusgeliehen(Long mediumId) throws Exception {
+		try {
+
+			ResultSet resultSet = statement
+					.executeQuery("select * from mydb.tbl_ausleihe where fk_medium= " + mediumId + ";");
+
+			if (resultSet.next()) {
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+
+		}
+
+	}
+
+	public void ruckgeben(Long mediumId) throws Exception {
+		try {
+
+			statement.executeUpdate("delete from mydb.tbl_ausleihe where fk_medium= " + mediumId + ";");
+
+			System.out.println("Medium wurde zur�ckgegeben");
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			close();
+		}
+	}
+
+	public void ausleihen(Long mediumId, Long kundeId) throws Exception {
+		String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+
+		try {
+
+			preparedStatement = connect
+					.prepareStatement("INSERT INTO mydb.tbl_ausleihe (fk_medium, fk_kunde, adatum) VALUES (?,?,?);");
+			preparedStatement.setLong(1, mediumId);
+			preparedStatement.setLong(2, kundeId);
+			preparedStatement.setString(3, date);
+			preparedStatement.executeUpdate();
+
+			System.out.println("Medium wurde ausgeliehen");
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			close();
+		}
 	}
 
 	private void close() {
