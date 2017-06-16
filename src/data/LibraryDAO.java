@@ -62,19 +62,7 @@ public class LibraryDAO {
 		System.out.println("trying to add...");
 
 		try {
-			/*
-			 * preparedStatement = connect.
-			 * prepareStatement("mydb.call sp_kundeEinfuegen(?,?,?,?,?,?,?);");
-			 * preparedStatement.setString(1, name);
-			 * preparedStatement.setString(2, vorname);
-			 * preparedStatement.setInt(3, geburtsjahr);
-			 * preparedStatement.setString(4, strasse);
-			 * preparedStatement.setInt(5, hnr); preparedStatement.setString(6,
-			 * ort); preparedStatement.setString(7, plz);
-			 * System.out.println("vor dem Execute...");
-			 * preparedStatement.executeUpdate();
-			 */
-
+		
 			preparedStatement = connect.prepareStatement("insert INTO mydb.tbl_ort(name, plz) VALUES (?,?);");
 			preparedStatement.setString(1, ort);
 			preparedStatement.setString(2, plz);
@@ -175,14 +163,15 @@ public class LibraryDAO {
 			preparedStatement.setLong(3, kundeID);
 			preparedStatement.executeUpdate();
 
-			resultSet = statement.executeQuery("SELECT fk_ort from mydb.tbl_kunde where id_kunde = ?;");
+			resultSet = statement.executeQuery("SELECT fk_ort from mydb.tbl_kunde where id_kunde = "+kundeID+";");
+			
 			int ortid = 0;
 			while (resultSet.next()) {
 				ortid = resultSet.getInt("fk_ort");
 			}
 
 			preparedStatement = connect
-					.prepareStatement("Update mydb.tbl_ort SET name=?, plz=? VALUES where id_ort = ?;");
+					.prepareStatement("Update mydb.tbl_ort SET name=?, plz=? where id_ort = ?;");
 			preparedStatement.setString(1, newOrt);
 			preparedStatement.setString(2, newPlz);
 			preparedStatement.setLong(3, ortid);
