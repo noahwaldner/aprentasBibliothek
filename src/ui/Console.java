@@ -48,53 +48,54 @@ public class Console {
 				System.out.print(
 						"1 um Kunde hinzuzufuegen, 2 um Medium hinzuzufuegen, 3 um eine Adresse zu Aendern, 4 um Kunde anzuzeigen, 5 um Medium anzuzeigen.");
 				aufgabe = sc.nextInt();
-					switch (aufgabe) {
-						case 1:
-							c.addKunde();
-							break;
-		
-						case 2:
-							c.addMedium();
-							break;
-		
-						case 3:
-							c.changeAdress();
-							break;
-		
-						case 4:
-							c.showKundeById();
-							break;
-		
-						case 5:
-							c.showMediumById();
-							break;
-						}
+				switch (aufgabe) {
+				case 1:
+					c.addKunde();
+					break;
+
+				case 2:
+					c.addMedium();
+					break;
+
+				case 3:
+					c.changeAdress();
+					break;
+
+				case 4:
+					c.showKundeById();
+					break;
+
+				case 5:
+					c.showMediumById();
+					break;
+				case 6:
+					c.ausleihenRuckgabeById();
+					break;
+				}
 
 				count++;
 				break;
 
 			case 2:
-				System.out.print(
-						"1 um ein Medium auszuleihen");
+				System.out.print("1 um ein Medium auszuleihen");
 				aufgabe = sc.nextInt();
-	// eigentlich sinnlos ein Switch-Case zu machen. Jedoch könnte man es so noch einfach erweitern 
+				// eigentlich sinnlos ein Switch-Case zu machen. Jedoch könnte
+				// man es so noch einfach erweitern
 				switch (aufgabe) {
 				case 1:
 					c.ausleihenRuckgabeById();
-				break;
+					break;
 				}
-				
+
 				count++;
 				break;
-			
 
 			default:
 				System.out.print("Dies ist eine ungueltige Nummer, bitte geben Sie eine gueltige Nummer ein: ");
 				System.out.print("1 fuer Mitarbeiter, 2 fuer Kunde: ");
 				benutzer = sc.nextInt();
-		
 
-			
+			}
 		} while (count == 0);
 	}
 
