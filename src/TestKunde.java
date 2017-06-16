@@ -28,44 +28,27 @@ public class TestKunde {
 	}
 	
 	@Test
-	public void testAusleihe() throws Exception {
+	public void testRueckgabe() throws Exception {
 		if(ld.getAusgeliehen((long)1) == true) {
 			
-			try {
-				assertTrue(ld.getAusgeliehen((long)1) == false);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			try {
-				ll.ausleihenRuckgabe((long)1, (long)1);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			assertEquals("Medium wurde ausgeliehen", outContent.toString());
+			ll.ausleihenRuckgabe((long)1, (long)1);
+			assertTrue(ld.getAusgeliehen((long)1) == false);
+	
 		} else {
-			assertEquals("", outContent.toString());
+			assertTrue(ld.getAusgeliehen((long)1) == false);
 		}
 	}
 	
 	@Test
-	public void testRueckgabe() throws Exception {
+	public void testAusleihen() throws Exception {
 		if(ld.getAusgeliehen((long)1) == false) {
 				
-			try {
-				assertTrue(ld.getAusgeliehen((long)1) == true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			try {
-				ll.ausleihenRuckgabe((long)1, (long)1);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			assertEquals("Medium wurde zurueckgegeben", outContent.toString());
+			ll.ausleihenRuckgabe((long)1, (long)1);
+			assertTrue(ld.getAusgeliehen((long)1) == true);
+
 		} else {
-			assertEquals("", outContent.toString());
+			
+			assertTrue(ld.getAusgeliehen((long)1) == true);
 		}
 	}
 }
