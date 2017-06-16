@@ -8,11 +8,15 @@ import logic.LibraryLogic;
  * @author aprentas
  * @version 1.0
  * @created 12-Jun-2017 09:46:49
+ * 
+ *          Diese Klasse ist die direkte Schnittstelle zum Benutzer. Anhand der
+ *          Eingaben in der Konsole kann man verschiedene Funktionen wie: Kunde
+ *          hinzufügen, Medien hinzufügen, Kunden anzeigen, ... aufrufen.
+ * 
  */
 public class Console {
 
 	static Scanner sc;
-
 	private static LibraryLogic logic;
 
 	public Console() throws Exception {
@@ -21,6 +25,9 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// In der Main-Klasse wird das "Menü" der Konsole angezeigt. Hier kann man
+	// mit den Eingaben (1,2,...) alle notwendigen Funktionen, in den einzelnen
+	// Switch-Case aufrufen.
 
 	public static void main(String[] args) throws Exception {
 
@@ -73,7 +80,6 @@ public class Console {
 	// eigentlich sinnlos ein Switch-Case zu machen. Jedoch könnte man es so noch einfach erweitern 
 				switch (aufgabe) {
 				case 1:
-					
 					c.ausleihenRuckgabeById();
 				break;
 				}
@@ -93,6 +99,9 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Diese Methode wird für die Erstellung eines Kundens benutzt. Zuerst
+	// werden
+	// alle Attribute abgefragt und dann weiter an die Logik übergeben.
 
 	public void addKunde() throws Exception {
 
@@ -139,6 +148,9 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Diese Methode wird für die Erstellung eines Mediums benutzt. Zuerst
+	// werden
+	// alle Attribute abgefragt und dann weiter an die Logik übergeben.
 
 	public void addMedium() {
 
@@ -166,15 +178,24 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Mit der Eingabe von einem Kunden und dem Medium, ein Medium
+	// ausleihen/zurückgeben indem man die Methode in der Logik aufruft.
 
 	public void ausleihenRuckgabeById() {
 
+		System.out.print("ID des Kundens eingeben \n: ");
+		int id_kunde = sc.nextInt();
 		System.out.print("ID des Mediums eingeben \n: ");
-		int id = sc.nextInt();
+		int id_medium = sc.nextInt();
+
+		logic.ausleihenRuckgabe(id_medium, id_kunde);
 
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Indem man die neue Adresse und die ID des Kunden eingibt, kann man in
+	// dieser Methode die Adresse ändern. Alle Angaben werden in die Logik an
+	// eine Methode übergeben.
 
 	public void changeAdress() {
 
@@ -199,6 +220,7 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Anzeige eines Kundens anhand der Eingabe der Kunden-ID.
 
 	public void showKundeById() {
 
@@ -209,6 +231,7 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Anzeige eines Mediums anhand der Eingabe der Medium-ID.
 
 	public void showMediumById() {
 
