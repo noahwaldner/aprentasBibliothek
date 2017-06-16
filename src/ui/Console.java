@@ -259,7 +259,7 @@ public class Console {
 
 		System.out.print("Medien ID eingeben");
 		Long mediumId = sc.nextLong();
-
+ 
 		logic.ausleihenRuckgabe(mediumId, kundenId);
 
 	}
