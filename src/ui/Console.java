@@ -8,11 +8,15 @@ import logic.LibraryLogic;
  * @author aprentas
  * @version 1.0
  * @created 12-Jun-2017 09:46:49
+ *
+ *          Diese Klasse ist die direkte Schnittstelle zum Benutzer. Anhand der
+ *          Eingaben in der Konsole kann man verschiedene Funktionen wie: Kunde
+ *          hinzuf�gen, Medien hinzuf�gen, Kunden anzeigen, ... aufrufen.
+ *
  */
 public class Console {
 
 	static Scanner sc;
-
 	private static LibraryLogic logic;
 
 	public Console() throws Exception {
@@ -21,6 +25,9 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// In der Main-Klasse wird das "Men�" der Konsole angezeigt. Hier kann man
+	// mit den Eingaben (1,2,...) alle notwendigen Funktionen, in den einzelnen
+	// Switch-Case aufrufen.
 
 	public static void main(String[] args) throws Exception {
 
@@ -60,13 +67,26 @@ public class Console {
 
 				case 5:
 					c.showMediumById();
+					break;
+				case 6:
+					c.ausleihenRuckgabeById();
+					break;
 				}
 
 				count++;
 				break;
 
 			case 2:
-				c.ausleihenRuckgabeById();
+				System.out.print("1 um ein Medium auszuleihen/zur�ckgeben.");
+				aufgabe = sc.nextInt();
+				// eigentlich sinnlos ein Switch-Case zu machen. Jedoch k�nnte
+				// man es so noch einfach erweitern
+				switch (aufgabe) {
+				case 1:
+					c.ausleihenRuckgabeById();
+					break;
+				}
+
 				count++;
 				break;
 
@@ -80,6 +100,9 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Diese Methode wird f�r die Erstellung eines Kundens benutzt. Zuerst
+	// werden
+	// alle Attribute abgefragt und dann weiter an die Logik �bergeben.
 
 	public void addKunde() throws Exception {
 
@@ -126,6 +149,9 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Diese Methode wird f�r die Erstellung eines Mediums benutzt. Zuerst
+	// werden
+	// alle Attribute abgefragt und dann weiter an die Logik �bergeben.
 
 	public void addMedium() {
 
@@ -153,15 +179,24 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Mit der Eingabe von einem Kunden und dem Medium, ein Medium
+	// ausleihen/zur�ckgeben indem man die Methode in der Logik aufruft.
 
 	public void ausleihenRuckgabeById() {
 
+		System.out.print("ID des Kundens eingeben \n: ");
+		long id_kunde = sc.nextInt();
 		System.out.print("ID des Mediums eingeben \n: ");
-		int id = sc.nextInt();
+		long id_medium = sc.nextInt();
+
+		logic.ausleihenRuckgabe(id_medium, id_kunde);
 
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Indem man die neue Adresse und die ID des Kunden eingibt, kann man in
+	// dieser Methode die Adresse �ndern. Alle Angaben werden in die Logik an
+	// eine Methode �bergeben.
 
 	public void changeAdress() {
 
@@ -174,7 +209,7 @@ public class Console {
 
 		System.out.print("Neue Strasse: ");
 		String strasseNeu = sc.nextLine();
-		
+
 
 		System.out.print("Neue Hausnummer: ");
 		int hnrNeu = sc.nextInt();
@@ -186,6 +221,7 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Anzeige eines Kundens anhand der Eingabe der Kunden-ID.
 
 	public void showKundeById() {
 
@@ -196,6 +232,7 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Anzeige eines Mediums anhand der Eingabe der Medium-ID.
 
 	public void showMediumById() {
 
