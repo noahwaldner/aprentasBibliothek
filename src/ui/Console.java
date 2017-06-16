@@ -24,10 +24,12 @@ public class Console {
 		sc = new Scanner(System.in);
 	}
 
-	// --------------------------------------------------------------------------------------------------------------------
-	// In der Main-Klasse wird das "Menï¿½" der Konsole angezeigt. Hier kann man
-	// mit den Eingaben (1,2,...) alle notwendigen Funktionen, in den einzelnen
-	// Switch-Case aufrufen.
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * // In der Main-Klasse wird das "Menï¿½" der Konsole angezeigt. Hier kann
+	 * man // mit den Eingaben (1,2,...) alle notwendigen Funktionen, in den
+	 * einzelnen Switch-Case aufrufen.
+	 **/
 
 	public static void main(String[] args) throws Exception {
 
@@ -92,10 +94,12 @@ public class Console {
 		} while (count == 0);
 	}
 
-	// --------------------------------------------------------------------------------------------------------------------
-	// Diese Methode wird fï¿½r die Erstellung eines Kundens benutzt. Zuerst
-	// werden
-	// alle Attribute abgefragt und dann weiter an die Logik ï¿½bergeben.
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * // Diese Methode wird fï¿½r die Erstellung eines Kundens benutzt. Zuerst
+	 * // werden // alle Attribute abgefragt und dann weiter an die Logik
+	 * ï¿½bergeben.
+	 **/
 
 	public void addKunde() throws Exception {
 
@@ -139,10 +143,12 @@ public class Console {
 
 	}
 
-	// --------------------------------------------------------------------------------------------------------------------
-	// Diese Methode wird fï¿½r die Erstellung eines Mediums benutzt. Zuerst
-	// werden
-	// alle Attribute abgefragt und dann weiter an die Logik ï¿½bergeben.
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * // Diese Methode wird fï¿½r die Erstellung eines Mediums benutzt. Zuerst
+	 * // werden // alle Attribute abgefragt und dann weiter an die Logik
+	 * ï¿½bergeben.
+	 **/
 
 	public void addMedium() {
 
@@ -169,9 +175,11 @@ public class Console {
 				titelEinlesen);
 	}
 
-	// --------------------------------------------------------------------------------------------------------------------
-	// Mit der Eingabe von einem Kunden und dem Medium, ein Medium
-	// ausleihen/zurï¿½ckgeben indem man die Methode in der Logik aufruft.
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * // Mit der Eingabe von einem Kunden und dem Medium, ein Medium //
+	 * ausleihen/zurï¿½ckgeben indem man die Methode in der Logik aufruft.
+	 **/
 
 	public void ausleihenRuckgabeById() throws Exception {
 
@@ -184,10 +192,12 @@ public class Console {
 
 	}
 
-	// --------------------------------------------------------------------------------------------------------------------
-	// Indem man die neue Adresse und die ID des Kunden eingibt, kann man in
-	// dieser Methode die Adresse ï¿½ndern. Alle Angaben werden in die Logik an
-	// eine Methode ï¿½bergeben.
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * // Indem man die neue Adresse und die ID des Kunden eingibt, kann man in
+	 * // dieser Methode die Adresse ï¿½ndern. Alle Angaben werden in die Logik
+	 * an // eine Methode ï¿½bergeben.
+	 **/
 
 	public void changeAdress() {
 
@@ -210,8 +220,10 @@ public class Console {
 		logic.changeAdress(strasseNeu, hnrNeu, plzNeu, ortNeu, kundeIDNeu);
 	}
 
-	// --------------------------------------------------------------------------------------------------------------------
-	// Anzeige eines Kundens anhand der Eingabe der Kunden-ID.
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * // Anzeige eines Kundens anhand der Eingabe der Kunden-ID.
+	 **/
 
 	public void showKundeById() {
 
@@ -221,8 +233,10 @@ public class Console {
 		System.out.print(result);
 	}
 
-	// --------------------------------------------------------------------------------------------------------------------
-	// Anzeige eines Mediums anhand der Eingabe der Medium-ID.
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * // Anzeige eines Mediums anhand der Eingabe der Medium-ID.
+	 **/
 
 	public void showMediumById() {
 
@@ -231,6 +245,12 @@ public class Console {
 		String result = logic.searchMedien(id);
 		System.out.print(result);
 	}
+
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * "Anmelden" mit einem Benutzer und dann noch ein Medium angeben. So kann
+	 * man ein Medium ausleihen oder zurückgeben.
+	 **/
 
 	public void kundenAktion(Long kundenId) throws Exception {
 
