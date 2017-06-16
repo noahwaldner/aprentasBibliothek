@@ -123,20 +123,18 @@ public class Console {
 		int geburtsjahrEinlesen = sc.nextInt();
 		// geburtsjahrEinlesen = sc.nextInt();
 
-		System.out.print("step 0");
-
 		try {
-			System.out.print("step 1");
+
 			Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
 					strasseEinlesen, vornameEinlesen);
-			System.out.print("step 2");
+
 			if (success) {
-				System.out.println("Kunde hinzugefügt");
+				System.out.println("Kunde hinzugefuegt");
 			} else {
 				System.out.println("Fehler");
 			}
 		} catch (Exception e) {
-			System.out.println("Fehler beim hinzufügen! " + e);
+			System.out.println("Fehler beim hinzuegen! " + e);
 		}
 
 	}

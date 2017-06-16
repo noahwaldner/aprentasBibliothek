@@ -48,8 +48,6 @@ public class LibraryDAO {
 	 */
 	public boolean addKunde(Kunde newKunde) throws Exception {
 
-
-
 		Boolean success = false;
 
 		String name = newKunde.getname();
@@ -60,17 +58,15 @@ public class LibraryDAO {
 		String ort = newKunde.getort();
 		int geburtsjahr = newKunde.getgeburtsjahr();
 
-
-
 		try {
-			
-			resultSet = statement.executeQuery(
-					"SELECT * from mydb.tbl_ort where NAME =\"" + ort + "\" and plz = " + plz + " ;");
+
+			resultSet = statement
+					.executeQuery("SELECT * from mydb.tbl_ort where NAME =\"" + ort + "\" and plz = " + plz + " ;");
 			int ortid = 0;
 			if (resultSet.next()) {
 				ortid = resultSet.getInt("id_ort");
-			}else{
-				
+			} else {
+
 				preparedStatement = connect.prepareStatement("insert INTO mydb.tbl_ort(name, plz) VALUES (?,?);");
 				preparedStatement.setString(1, ort);
 				preparedStatement.setString(2, plz);
@@ -83,9 +79,6 @@ public class LibraryDAO {
 					ortid = resultSet.getInt("id_ort");
 				}
 			}
-			
-
-			
 
 			preparedStatement = connect.prepareStatement(
 					"insert INTO mydb.tbl_kunde(name, vorname, geburtsjahr, strasse, nummer,fk_ort) VALUES (?,?,?,?,?,?);");
@@ -118,7 +111,6 @@ public class LibraryDAO {
 	 */
 	public boolean addMedium(Medium newMedium) throws Exception {
 
-
 		Boolean success = false;
 
 		Short altersfreigabe = newMedium.getaltersfreigabe();
@@ -128,7 +120,6 @@ public class LibraryDAO {
 		String herausgeber = newMedium.getautor();
 		String ean = newMedium.getISBN();
 		String standort_code = newMedium.getstandortCode();
-
 
 		try {
 
@@ -155,8 +146,6 @@ public class LibraryDAO {
 
 		return success;
 	}
-
-	
 
 	/**
 	 * 
@@ -187,7 +176,7 @@ public class LibraryDAO {
 			preparedStatement.setString(1, newOrt);
 			preparedStatement.setString(2, newPlz);
 			preparedStatement.setLong(3, ortid);
-			
+
 			preparedStatement.executeUpdate();
 			System.out.println("Adresse geaendert!");
 			return true;
@@ -320,7 +309,7 @@ public class LibraryDAO {
 
 			System.out.println("Medium wurde ausgeliehen");
 		} catch (Exception e) {
-			
+
 			System.out.println("Kunde oder Medium nicht gefunden");
 		} finally {
 			close();
