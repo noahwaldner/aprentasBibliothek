@@ -102,8 +102,12 @@ public class LibraryLogic {
 		try{
 			Medium m = dataAccess.getMediumById(mediumID);
 			
-			//ausgabe =	m.getString();
-		}catch (Exception e){}
+			
+			
+			ausgabe =	m.getString();
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
 		
 		return ausgabe;
 		

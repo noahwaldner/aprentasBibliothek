@@ -186,18 +186,20 @@ public class LibraryDAO {
 		
 		try{
 			
-		ResultSet resultSet = statement.executeQuery("select * from mydb.tbl_kunde where id_kunde="+kundenid+" ; ");
-
-		k.setname(resultSet.getString("name"));
-		k.setvorname(resultSet.getString("vorname"));
-		k.setgeburtsjahr(resultSet.getInt("geburtsjahr"));
-		k.setort(resultSet.getString("ort"));
-		k.setstrasse(resultSet.getString("strasse"));
-		k.sethnr(resultSet.getInt("hnr"));
-		k.setplz(resultSet.getString("plz"));
-		k.setid(resultSet.getInt("id_kunde"));
-		
-		
+			ResultSet resultSet = statement.executeQuery("select * from mydb.v_zeigeKunde where KundenId="+kundenid+" ; ");
+			
+			if (resultSet.next()) {
+	
+				k.setname(resultSet.getString("name"));
+				k.setvorname(resultSet.getString("vorname"));
+				k.setgeburtsjahr(resultSet.getInt("geburtsjahr"));
+				k.setort(resultSet.getString("ort"));
+				k.setstrasse(resultSet.getString("strasse"));
+				k.sethnr(resultSet.getInt("Hausnummer"));
+				k.setplz(resultSet.getString("plz"));
+				k.setid(resultSet.getInt("KundenId"));
+			
+			}
 		
 		}catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -217,23 +219,28 @@ public class LibraryDAO {
 	 * @param mediumid
 	 */
 	public Medium getMediumById(Long mediumid) throws Exception{
+		
+		
 
 		Medium m = new Medium();
 
 		try{
 
-			preparedStatement = connect.prepareStatement("select * from mydb.kunden where id_medium= ? ; ");
-			preparedStatement.setString(1, mediumid.toString());
-			preparedStatement.executeUpdate();
+			ResultSet resultSet = statement.executeQuery("select * from mydb.tbl_medium where id_medium= "+mediumid+";");
+			
+			if (resultSet.next()) {
+				m.setID(resultSet.getInt("id_medium"));
+				m.setaltersfreigabe(resultSet.getShort("altersfreigabe"));
+				m.setautor(resultSet.getString("herausgeber"));
+				m.setgenre(resultSet.getString("genre"));
+				m.setISBN(resultSet.getString("ean"));
+				m.setstandortCode(resultSet.getString("standort_code"));
+				m.settitel(resultSet.getString("titel"));
+			}
 
-			m.setID(resultSet.getInt("id_medium"));
-			m.setaltersfreigabe(resultSet.getShort("altersfreigabe"));
-			m.setautor(resultSet.getString("herausgeber"));
-			m.setgenre(resultSet.getString("genre"));
-			m.setISBN(resultSet.getString("ean"));
-			m.setstandortCode(resultSet.getString("standort_code"));
-			m.settitel(resultSet.getString("titel"));
-
+			
+			
+			
 
 
 
