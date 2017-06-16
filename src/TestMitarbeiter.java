@@ -41,7 +41,7 @@ public class TestMitarbeiter {
 		long l = 1;
 		String ans = logic.searchKunde(l);
 		Kunde k = dataAccess.getKundeById(l);
-		String ans2 = k.getString();
+		String ans2 = k.getString(); 
 		assertEquals(ans, ans2);
 		
 	}
