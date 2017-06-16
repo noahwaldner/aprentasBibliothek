@@ -48,7 +48,7 @@ public class Console {
 
 			case 1:
 				System.out.print(
-						" 1 um Kunde hinzuzufuegen, \n 2 um Medium hinzuzufuegen,\n 3 um eine Adresse zu Aendern,\n 4 um Kunde anzuzeigen,\n 5 um Medium anzuzeigen,\n 6 um ein Medium auszuleihen/zurueckgeben.");
+						" 1 um Kunde hinzuzufuegen, \n 2 um Medium hinzuzufuegen,\n 3 um eine Adresse zu Aendern,\n 4 um Kunde anzuzeigen,\n 5 um Medium anzuzeigen,\n 6 um ein Medium auszuleihen/zurueckgeben\n, 7 um ein Medium zu loeschen,\n 8 um ein Kunden zz loeschen");
 				aufgabe = sc.nextInt();
 				switch (aufgabe) {
 				case 1:
@@ -72,6 +72,12 @@ public class Console {
 					break;
 				case 6:
 					c.ausleihenRuckgabeById();
+					break;
+				case 7:
+					c.deleteMedium();
+					break;
+				case 8:
+					c.deleteKunde();
 					break;
 				}
 
@@ -259,9 +265,33 @@ public class Console {
 
 		System.out.print("Medien ID eingeben");
 		Long mediumId = sc.nextLong();
- 
+
 		logic.ausleihenRuckgabe(mediumId, kundenId);
 
+	}
+
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * // Löschen eines Mediums anhand der Eingabe der Medium-ID.
+	 **/
+
+	public void deleteMedium() {
+
+		System.out.print("ID des Mediums ,welches man löschen möchte, angeben: ");
+		Long id = sc.nextLong();
+		logic.deleteMedium(id);
+	}
+
+	/**
+	 * --------------------------------------------------------------------------------------------------------------------
+	 * // Löschen eines Kundens anhand der Eingabe der Kunden-ID.
+	 **/
+
+	public void deleteKunde() {
+
+		System.out.print("ID des Kundens ,welches man löschen möchte, angeben: ");
+		Long id = sc.nextLong();
+		logic.deleteKunde(id);
 	}
 
 }
