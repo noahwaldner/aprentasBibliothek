@@ -63,19 +63,29 @@ public class LibraryDAO {
 		System.out.println("trying to add...");
 
 		try {
-
-			preparedStatement = connect.prepareStatement("insert INTO mydb.tbl_ort(name, plz) VALUES (?,?);");
-			preparedStatement.setString(1, ort);
-			preparedStatement.setString(2, plz);
-			System.out.println("vor dem Execute...");
-			preparedStatement.executeUpdate();
-
+			
 			resultSet = statement.executeQuery(
-					"SELECT id_ort from mydb.tbl_ort where NAME =\"" + ort + "\" and plz = " + plz + " ;");
+					"SELECT * from mydb.tbl_ort where NAME =\"" + ort + "\" and plz = " + plz + " ;");
 			int ortid = 0;
-			while (resultSet.next()) {
+			if (resultSet.next()) {
 				ortid = resultSet.getInt("id_ort");
+			}else{
+				
+				preparedStatement = connect.prepareStatement("insert INTO mydb.tbl_ort(name, plz) VALUES (?,?);");
+				preparedStatement.setString(1, ort);
+				preparedStatement.setString(2, plz);
+				System.out.println("vor dem Execute...");
+				preparedStatement.executeUpdate();
+
+				resultSet = statement.executeQuery(
+						"SELECT id_ort from mydb.tbl_ort where NAME =\"" + ort + "\" and plz = " + plz + " ;");
+				while (resultSet.next()) {
+					ortid = resultSet.getInt("id_ort");
+				}
 			}
+			
+
+			
 
 			preparedStatement = connect.prepareStatement(
 					"insert INTO mydb.tbl_kunde(name, vorname, geburtsjahr, strasse, nummer,fk_ort) VALUES (?,?,?,?,?,?);");
@@ -175,9 +185,9 @@ public class LibraryDAO {
 			preparedStatement.setString(1, newOrt);
 			preparedStatement.setString(2, newPlz);
 			preparedStatement.setLong(3, ortid);
-			System.out.println("vor dem Execute...");
+			
 			preparedStatement.executeUpdate();
-
+			System.out.println("Adresse geaendert!");
 			return true;
 
 		} catch (Exception e) {
