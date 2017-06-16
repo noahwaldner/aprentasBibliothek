@@ -108,7 +108,7 @@ public class LibraryDAO {
 
 			preparedStatement.executeUpdate();
 
-			System.out.println("Kunde hinzugefügt");
+		
 			success = true;
 		} catch (Exception e) {
 			System.out.println("Fehler");
@@ -410,6 +410,42 @@ public class LibraryDAO {
 			}
 		} catch (Exception e) {
 
+		}
+	}
+	
+	/**
+	 * Loescht den Eintrag in tbl_kunde wo die Spalte id_kunde = den eingegebenen Wert kundeID hat.
+	 * @param kundeID
+	 */
+	public void deleteKunde(Long kundeID){
+		try {
+
+			statement.executeUpdate("delete from mydb.tbl_kunde where id_kunde= " + kundeID + ";");
+
+			System.out.println("Kunde wurde geloescht");
+
+		} catch (Exception e) {
+			System.out.println("Kunde nicht gefunden");
+		} finally {
+			close();
+		}
+	}
+	
+	
+	/**
+	 * Loescht den Eintrag in tbl_medium wo id_medium = den eingegebenen Wert mediumID hat.
+	 * @param kundeID
+	 */
+	public void deleteMedium(Long mediumID){
+		try {
+
+			statement.executeUpdate("delete from mydb.tbl_kunde where fk_medium= " + mediumID + ";");
+			System.out.println("Medium wurde geloescht");
+
+		} catch (Exception e) {
+			System.out.println("Medium nicht gefunden");
+		} finally {
+			close();
 		}
 	}
 

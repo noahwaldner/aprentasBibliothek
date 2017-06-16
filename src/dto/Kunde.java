@@ -120,7 +120,7 @@ public class Kunde {
 	}
 
 	/**
-	 * Es wird aus allen Attributen ein String zusammengebaut über welchen das ganze Objekt dargestellt werden kann.
+	 * Es wird aus allen Attributen ein String zusammengebaut Ueber welchen das ganze Objekt dargestellt werden kann.
 	 * @return String s
 	 */
 	public String getString() {

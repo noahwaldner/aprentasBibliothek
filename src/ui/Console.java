@@ -48,7 +48,7 @@ public class Console {
 
 			case 1:
 				System.out.print(
-						"1 um Kunde hinzuzufuegen, \n 2 um Medium hinzuzufuegen,\n 3 um eine Adresse zu Aendern,\n 4 um Kunde anzuzeigen,\n 5 um Medium anzuzeigen,\n 6 um ein Medium auszuleihen/zurueckgeben.");
+						" 1 um Kunde hinzuzufuegen, \n 2 um Medium hinzuzufuegen,\n 3 um eine Adresse zu Aendern,\n 4 um Kunde anzuzeigen,\n 5 um Medium anzuzeigen,\n 6 um ein Medium auszuleihen/zurueckgeben.");
 				aufgabe = sc.nextInt();
 				switch (aufgabe) {
 				case 1:

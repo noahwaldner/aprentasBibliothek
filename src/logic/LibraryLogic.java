@@ -97,8 +97,7 @@ public class LibraryLogic {
 			dataAccess.ruckgeben(mediumId);
 		} else {
 			dataAccess.ausleihen(mediumId, kundeId);
-		}
-		;
+		};
 		return false;
 	}
 
@@ -117,7 +116,7 @@ public class LibraryLogic {
 	}
 
 	/**
-	 * Standartmässig wird der rückgabewert in der Variabel "ausgabe" auf "Kein Kunde gefunden!" gesetzt.
+	 * Standartmässig wird der rueckgabewert in der Variabel "ausgabe" auf "Kein Kunde gefunden!" gesetzt.
 	 * Es wird der Eingegebene Wert an die methode getKundeById gegeben und der rückgabewert (Objekt vom Typ Kunde) zwischengespeichert.
 	 * Auf dem zwischengespeicherten Objekt wird die Methode getString() aufgerufen und der Rückgabewert in die variabel "ausgabe" gespeichert.
 	 *
@@ -138,7 +137,7 @@ public class LibraryLogic {
 	}
 
 	/**
-	 * Standartmässig wird der rückgabewert in der Variabel "ausgabe" auf "Kein Medium gefunden!" gesetzt.
+	 * Standartmaessig wird der rückgabewert in der Variabel "ausgabe" auf "Kein Medium gefunden!" gesetzt.
 	 * Es wird der Eingegebene Wert an die methode getMediumById gegeben und der Rückgabewert (Objekt vom Typ Medium) zwischengespeichert.
 	 * Auf dem zwischengespeicherten Objekt wird die Methode getString() aufgerufen und der Rückgabewert in die variabel "ausgabe" gespeichert.
 	 *
@@ -157,6 +156,22 @@ public class LibraryLogic {
 
 		return ausgabe;
 
+	}
+	
+	/**
+	 * gibt eingegebenen Wert kundenID an Methode deleteKunde() im LibraryDAO weiter
+	 * @param kundenId
+	 */
+	public void deleteKunde(long kundenId){
+		dataAccess.deleteKunde(kundenId);
+	}
+	
+	/**
+	 * gibt eingegebenen Wert mediumID an Methode deleteMedium() im LibraryDAO weiter
+	 * @param kundenId
+	 */
+	public void deleteMedium(long mediumId){
+		dataAccess.deleteKunde(mediumId);
 	}
 
 }
