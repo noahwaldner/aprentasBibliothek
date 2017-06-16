@@ -166,6 +166,8 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Mit der Eingabe von einem Kunden und dem Medium, ein Medium
+	// ausleihen/zurückgeben indem man die Methode in der Logik aufruft.
 
 	public void ausleihenRuckgabeById() {
 
@@ -179,6 +181,9 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Indem man die neue Adresse und die ID des Kunden eingibt, kann man in
+	// dieser Methode die Adresse ändern. Alle Angaben werden in die Logik an
+	// eine Methode übergeben.
 
 	public void changeAdress() {
 
@@ -203,6 +208,7 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Anzeige eines Kundens anhand der Eingabe der Kunden-ID.
 
 	public void showKundeById() {
 
@@ -213,6 +219,7 @@ public class Console {
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
+	// Anzeige eines Mediums anhand der Eingabe der Medium-ID.
 
 	public void showMediumById() {
 
