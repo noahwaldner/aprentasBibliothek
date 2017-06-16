@@ -48,7 +48,7 @@ public class LibraryDAO {
 	 */
 	public boolean addKunde(Kunde newKunde) throws Exception {
 
-		System.out.println("start of routine addKunde()...");
+
 
 		Boolean success = false;
 
@@ -60,7 +60,7 @@ public class LibraryDAO {
 		String ort = newKunde.getort();
 		int geburtsjahr = newKunde.getgeburtsjahr();
 
-		System.out.println("trying to add...");
+
 
 		try {
 			
@@ -74,7 +74,7 @@ public class LibraryDAO {
 				preparedStatement = connect.prepareStatement("insert INTO mydb.tbl_ort(name, plz) VALUES (?,?);");
 				preparedStatement.setString(1, ort);
 				preparedStatement.setString(2, plz);
-				System.out.println("vor dem Execute...");
+
 				preparedStatement.executeUpdate();
 
 				resultSet = statement.executeQuery(
@@ -117,7 +117,7 @@ public class LibraryDAO {
 	 * @param newMedium
 	 */
 	public boolean addMedium(Medium newMedium) throws Exception {
-		System.out.println("Checkpoint 1 DAO");
+
 
 		Boolean success = false;
 
@@ -129,7 +129,7 @@ public class LibraryDAO {
 		String ean = newMedium.getISBN();
 		String standort_code = newMedium.getstandortCode();
 
-		System.out.println("Checkpoint 2 DAO" + titel);
+
 		try {
 
 			preparedStatement = connect.prepareStatement("INSERT INTO mydb.tbl_medium"
@@ -141,7 +141,7 @@ public class LibraryDAO {
 			preparedStatement.setShort(4, altersfreigabe);
 			preparedStatement.setString(5, herausgeber);
 			preparedStatement.setString(6, ean);
-			System.out.println("Execute!");
+
 			preparedStatement.executeUpdate();
 			System.out.println("added");
 			success = true;
@@ -155,6 +155,8 @@ public class LibraryDAO {
 
 		return success;
 	}
+
+	
 
 	/**
 	 * 
@@ -191,7 +193,7 @@ public class LibraryDAO {
 			return true;
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("Kunde nicht gefunden");
 			return false;
 
 		} finally {
@@ -226,7 +228,7 @@ public class LibraryDAO {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Error: " + e.getMessage());
+			System.out.println("Kunde nicht gefunden");
 			throw e;
 
 		} finally {
@@ -261,7 +263,7 @@ public class LibraryDAO {
 			}
 
 		} catch (Exception e) {
-			throw e;
+			System.out.println("Medium nicht gefunden");
 		} finally {
 			close();
 		}
@@ -298,7 +300,7 @@ public class LibraryDAO {
 			System.out.println("Medium wurde zur�ckgegeben");
 
 		} catch (Exception e) {
-			throw e;
+			System.out.println("Medium nicht gefunden");
 		} finally {
 			close();
 		}
@@ -318,7 +320,8 @@ public class LibraryDAO {
 
 			System.out.println("Medium wurde ausgeliehen");
 		} catch (Exception e) {
-			throw e;
+			
+			System.out.println("Kunde oder Medium nicht gefunden");
 		} finally {
 			close();
 		}
