@@ -184,9 +184,9 @@ public class Console {
 	public void ausleihenRuckgabeById() {
 
 		System.out.print("ID des Kundens eingeben \n: ");
-		int id_kunde = sc.nextInt();
+		long id_kunde = sc.nextInt();
 		System.out.print("ID des Mediums eingeben \n: ");
-		int id_medium = sc.nextInt();
+		long id_medium = sc.nextInt();
 
 		logic.ausleihenRuckgabe(id_medium, id_kunde);
 
