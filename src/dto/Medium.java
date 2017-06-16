@@ -1,6 +1,5 @@
 package dto;
 
-
 /**
  * @author aprentas
  * @version 1.0
@@ -15,36 +14,35 @@ public class Medium {
 	private String standortCode;
 	private String titel;
 
-	public Medium(){
+	public Medium() {
 
 	}
 
-
-	public short getaltersfreigabe(){
+	public short getaltersfreigabe() {
 		return altersfreigabe;
 	}
 
-	public String getautor(){
+	public String getautor() {
 		return autor;
 	}
 
-	public String getgenre(){
+	public String getgenre() {
 		return genre;
 	}
 
-	public long getID(){
+	public long getID() {
 		return ID;
 	}
 
-	public String getISBN(){
+	public String getISBN() {
 		return ISBN;
 	}
 
-	public String getstandortCode(){
+	public String getstandortCode() {
 		return standortCode;
 	}
 
-	public String gettitel(){
+	public String gettitel() {
 		return titel;
 	}
 
@@ -52,7 +50,7 @@ public class Medium {
 	 * 
 	 * @param newVal
 	 */
-	public void setaltersfreigabe(short newVal){
+	public void setaltersfreigabe(short newVal) {
 		altersfreigabe = newVal;
 	}
 
@@ -60,7 +58,7 @@ public class Medium {
 	 * 
 	 * @param newVal
 	 */
-	public void setautor(String newVal){
+	public void setautor(String newVal) {
 		autor = newVal;
 	}
 
@@ -68,7 +66,7 @@ public class Medium {
 	 * 
 	 * @param newVal
 	 */
-	public void setgenre(String newVal){
+	public void setgenre(String newVal) {
 		genre = newVal;
 	}
 
@@ -76,7 +74,7 @@ public class Medium {
 	 * 
 	 * @param newVal
 	 */
-	public void setID(int newVal){
+	public void setID(int newVal) {
 		ID = newVal;
 	}
 
@@ -84,7 +82,7 @@ public class Medium {
 	 * 
 	 * @param newVal
 	 */
-	public void setISBN(String newVal){
+	public void setISBN(String newVal) {
 		ISBN = newVal;
 	}
 
@@ -92,7 +90,7 @@ public class Medium {
 	 * 
 	 * @param newVal
 	 */
-	public void setstandortCode(String newVal){
+	public void setstandortCode(String newVal) {
 		standortCode = newVal;
 	}
 
@@ -100,17 +98,15 @@ public class Medium {
 	 * 
 	 * @param newVal
 	 */
-	public void settitel(String newVal){
+	public void settitel(String newVal) {
 		titel = newVal;
 	}
-	
-	public String getString(){
-		String s = "";
-		s = "ID: " + getID() +"\n"+ gettitel()+"\n" + getautor()+"\n" + getgenre()+"\n" + getaltersfreigabe()+"\n" + getstandortCode()+"\n" + getISBN(); 
-		return s;	
-	}
 
-	
-	
+	public String getString() {
+		String s = "";
+		s = "ID: " + getID() + "\n" + gettitel() + "\n" + getautor() + "\n" + getgenre() + "\n" + getaltersfreigabe()
+				+ "\n" + getstandortCode() + "\n" + getISBN();
+		return s;
+	}
 
 }

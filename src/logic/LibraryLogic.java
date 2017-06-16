@@ -13,14 +13,13 @@ public class LibraryLogic {
 
 	private LibraryDAO dataAccess;
 
-	public LibraryLogic() throws Exception{
+	public LibraryLogic() throws Exception {
 		dataAccess = new LibraryDAO();
 	}
 
-
-
-	public boolean addKunde(int geburtsjahr, int hnr, String name, String ort, String plz, String strasse, String vorname) throws Exception {
-		try{
+	public boolean addKunde(int geburtsjahr, int hnr, String name, String ort, String plz, String strasse,
+			String vorname) throws Exception {
+		try {
 			Kunde k = new Kunde();
 			k.setgeburtsjahr(geburtsjahr);
 			k.sethnr(hnr);
@@ -32,18 +31,17 @@ public class LibraryLogic {
 			Boolean success = dataAccess.addKunde(k);
 
 			return (success);
-		}catch (Exception e){
+		} catch (Exception e) {
 
 			return false;
 		}
 
 	}
 
+	public boolean addMedien(short altersfreigabe, String autor, String genre, String ISBN, String standortCode,
+			String titel) {
 
-	
-	public boolean addMedien(short altersfreigabe, String autor,  String genre, String ISBN, String standortCode, String titel){
-
-		try{
+		try {
 			Medium m = new Medium();
 			m.setaltersfreigabe(altersfreigabe);
 			m.setautor(autor);
@@ -55,63 +53,48 @@ public class LibraryLogic {
 			Boolean success = dataAccess.addMedium(m);
 
 			return (success);
-		}catch (Exception e){
+		} catch (Exception e) {
 
-		return false;
+			return false;
 		}
 
-	} 
+	}
 
-	
-	public boolean ausleihenRuckgabe(Medium m, Long kundeID){
+	public boolean ausleihenRuckgabe(Medium m, Long kundeID) {
 		return false;
 	}
 
+	public boolean changeAdress(String street, int hnr, String plz, String ort, Long kundeID) {
 
-	public boolean changeAdress(String street, int hnr, String plz, String ort, Long kundeID){
-		try {
-			Kunde k = dataAccess.getKundeById(kundeID);
-			k.setstrasse(street);
-			k.sethnr(hnr);
-			k.setplz(plz);
-			k.setort(ort);
-		} catch (Exception e) {
-		}
+		dataAccess.changeAdress(street, hnr, plz, ort, kundeID);
 		return true;
 	}
 
-
-	public String searchKunde(Long kundeID){
+	public String searchKunde(Long kundeID) {
 		String ausgabe = "Kein Kunde gefunden!";
-		try{
+		try {
 			Kunde k = dataAccess.getKundeById(kundeID);
-			
-			ausgabe =	k.getString();
-		}catch (Exception e){
-			System.out.println(e.getMessage());
-		}
-		
-		return ausgabe; 
-	}
-	
-			
 
-	
-	public String searchMedien(Long mediumID){
-		String ausgabe = "Kein Kunde gefunden!";
-		try{
-			Medium m = dataAccess.getMediumById(mediumID);
-			
-			
-			
-			ausgabe =	m.getString();
-		}catch (Exception e){
+			ausgabe = k.getString();
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		return ausgabe;
-		
 	}
 
+	public String searchMedien(Long mediumID) {
+		String ausgabe = "Kein Kunde gefunden!";
+		try {
+			Medium m = dataAccess.getMediumById(mediumID);
+
+			ausgabe = m.getString();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return ausgabe;
+
+	}
 
 }

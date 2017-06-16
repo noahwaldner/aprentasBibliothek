@@ -11,8 +11,6 @@ import logic.LibraryLogic;
  */
 public class Console {
 
-
-
 	static Scanner sc;
 
 	private static LibraryLogic logic;
@@ -67,7 +65,7 @@ public class Console {
 				count++;
 				break;
 
-			case 2:	
+			case 2:
 				c.ausleihenRuckgabeById();
 				count++;
 				break;
@@ -86,11 +84,11 @@ public class Console {
 	public void addKunde() throws Exception {
 
 		System.out.print("Name: ");
-        String nameEinlesen;
-        String pause = sc.nextLine();
-        nameEinlesen = sc.nextLine();
+		String nameEinlesen;
+		String pause = sc.nextLine();
+		nameEinlesen = sc.nextLine();
 
-        System.out.print("Vorname: ");
+		System.out.print("Vorname: ");
 		String vornameEinlesen = sc.nextLine();
 
 		System.out.print("Strasse: ");
@@ -107,24 +105,23 @@ public class Console {
 
 		System.out.print("Geburtsjahr: ");
 		int geburtsjahrEinlesen = sc.nextInt();
-        //geburtsjahrEinlesen = sc.nextInt();
+		// geburtsjahrEinlesen = sc.nextInt();
 
-        System.out.print("step 0");
+		System.out.print("step 0");
 
-
-        try {
-            System.out.print("step 1");
-            Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen, strasseEinlesen, vornameEinlesen);
-            System.out.print("step 2");
-            if (success){
-                System.out.println("Kunde hinzugefügt");
-            }else {
-                System.out.println("Fehler");
-            }
-        }catch (Exception e){
-            System.out.println("Fehler beim hinzufügen! " + e);
-        }
-
+		try {
+			System.out.print("step 1");
+			Boolean success = logic.addKunde(geburtsjahrEinlesen, hnrEinlesen, nameEinlesen, ortEinlesen, plzEinlesen,
+					strasseEinlesen, vornameEinlesen);
+			System.out.print("step 2");
+			if (success) {
+				System.out.println("Kunde hinzugefügt");
+			} else {
+				System.out.println("Fehler");
+			}
+		} catch (Exception e) {
+			System.out.println("Fehler beim hinzufügen! " + e);
+		}
 
 	}
 
@@ -133,9 +130,8 @@ public class Console {
 	public void addMedium() {
 
 		System.out.print("Titel: ");
-        String pause = sc.nextLine();
+		String pause = sc.nextLine();
 		String titelEinlesen = sc.nextLine();
-
 
 		System.out.print("Autor: ");
 		String autorEinlesen = sc.nextLine();
@@ -149,22 +145,20 @@ public class Console {
 		System.out.print("Standort-Code: ");
 		String standortEinlesen = sc.nextLine();
 
-
-
 		System.out.print("Altersfreigabe: ");
 		short altersfreigabeEinlesen = sc.nextShort();
 
-		logic.addMedien(altersfreigabeEinlesen, autorEinlesen, genreEinlesen, ISBNEinlesen,
-				standortEinlesen, titelEinlesen);
+		logic.addMedien(altersfreigabeEinlesen, autorEinlesen, genreEinlesen, ISBNEinlesen, standortEinlesen,
+				titelEinlesen);
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
-	
+
 	public void ausleihenRuckgabeById() {
-		
+
 		System.out.print("ID des Mediums eingeben \n: ");
-		int id = sc.nextInt(); 
-		
+		int id = sc.nextInt();
+
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------
@@ -207,8 +201,8 @@ public class Console {
 
 		System.out.print("ID des Mediums angeben: ");
 		Long id = sc.nextLong();
-        String result = logic.searchMedien(id);
-        System.out.print(result);
+		String result = logic.searchMedien(id);
+		System.out.print(result);
 	}
 
 }
