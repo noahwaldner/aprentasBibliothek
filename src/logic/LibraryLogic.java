@@ -85,11 +85,11 @@ public class LibraryLogic {
 	}
 
 	/**
-	 * Es wird
+	 * Es wird die eigegebene MedienID an die Methode getAusgeliehen() im LibraryDAO gegeben um zu überprüfen ob das Medium ausgeliehen ist.
+	 * Falls ausgeliehen: Eingegebe Medium ID wird an die Methode ruckgeben() im LibraryDAO gegeben.
+	 * Falls nicht ausgeliehen: Eingegebe Medium ID und Kunde ID wird an die Methode ausleihen() im LibraryDAO gegeben.
 	 * @param mediumId
 	 * @param kundeId
-	 * @return
-	 * @throws Exception
 	 */
 	public boolean ausleihenRuckgabe(Long mediumId, Long kundeId) throws Exception {
 		boolean isAusgeliehen = dataAccess.getAusgeliehen(mediumId);
@@ -102,12 +102,28 @@ public class LibraryLogic {
 		return false;
 	}
 
+	/**
+	 * Die eingegebenen Werte werden an die Methode changeAdress im LibraryDAO gegeben.
+	 * @param street
+	 * @param hnr
+	 * @param plz
+	 * @param ort
+	 * @param kundeID
+	 */
 	public boolean changeAdress(String street, int hnr, String plz, String ort, Long kundeID) {
 
 		dataAccess.changeAdress(street, hnr, plz, ort, kundeID);
 		return true;
 	}
 
+	/**
+	 * Standartmässig wird der rückgabewert in der Variabel "ausgabe" auf "Kein Kunde gefunden!" gesetzt.
+	 * Es wird der Eingegebene Wert an die methode getKundeById gegeben und der rückgabewert (Objekt vom Typ Kunde) zwischengespeichert.
+	 * Auf dem zwischengespeicherten Objekt wird die Methode getString() aufgerufen und der Rückgabewert in die variabel "ausgabe" gespeichert.
+	 *
+	 * @param kundeID
+	 * @return String ausgabe
+	 */
 	public String searchKunde(Long kundeID) {
 		String ausgabe = "Kein Kunde gefunden!";
 		try {
@@ -121,8 +137,16 @@ public class LibraryLogic {
 		return ausgabe;
 	}
 
+	/**
+	 * Standartmässig wird der rückgabewert in der Variabel "ausgabe" auf "Kein Medium gefunden!" gesetzt.
+	 * Es wird der Eingegebene Wert an die methode getMediumById gegeben und der Rückgabewert (Objekt vom Typ Medium) zwischengespeichert.
+	 * Auf dem zwischengespeicherten Objekt wird die Methode getString() aufgerufen und der Rückgabewert in die variabel "ausgabe" gespeichert.
+	 *
+	 * @param mediumID
+	 * @return String ausgabe
+	 */
 	public String searchMedien(Long mediumID) {
-		String ausgabe = "Kein Kunde gefunden!";
+		String ausgabe = "Kein medium gefunden!";
 		try {
 			Medium m = dataAccess.getMediumById(mediumID);
 
