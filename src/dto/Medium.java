@@ -105,6 +105,10 @@ public class Medium {
 		titel = newVal;
 	}
 
+	/**
+	 * Es wird aus allen Attributen ein String zusammengebaut über welchen das ganze Objekt dargestellt werden kann.
+	 * @return String s
+	 */
 	public String getString() {
 		String s = "";
 		s = "ID: " + getID() + "\n" + gettitel() + "\n" + getautor() + "\n" + getgenre() + "\n" + getaltersfreigabe()

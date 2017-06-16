@@ -17,6 +17,19 @@ public class LibraryLogic {
 		dataAccess = new LibraryDAO();
 	}
 
+	/**
+	 * Es wird aus den Eingabeparametern ein Objekt des Typs Kunde zusammengebaut welches an die Methode addKunde im LibraryDAO weitergegeben wird.
+	 *
+	 * @param geburtsjahr
+	 * @param hnr
+	 * @param name
+	 * @param ort
+	 * @param plz
+	 * @param strasse
+	 * @param vorname
+	 * @return success
+
+	 */
 	public boolean addKunde(int geburtsjahr, int hnr, String name, String ort, String plz, String strasse,
 			String vorname) throws Exception {
 		try {
@@ -38,6 +51,17 @@ public class LibraryLogic {
 
 	}
 
+	/**
+	 * Es wird aus den Eingabeparametern ein Objekt des Typs Medium zusammengebaut welches an die Methode addMedium im LibraryDAO weitergegeben wird.
+	 *
+	 * @param altersfreigabe
+	 * @param autor
+	 * @param genre
+	 * @param ISBN
+	 * @param standortCode
+	 * @param titel
+	 * @return
+	 */
 	public boolean addMedien(short altersfreigabe, String autor, String genre, String ISBN, String standortCode,
 			String titel) {
 
@@ -60,6 +84,13 @@ public class LibraryLogic {
 
 	}
 
+	/**
+	 * Es wird
+	 * @param mediumId
+	 * @param kundeId
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean ausleihenRuckgabe(Long mediumId, Long kundeId) throws Exception {
 		boolean isAusgeliehen = dataAccess.getAusgeliehen(mediumId);
 		if (isAusgeliehen) {
