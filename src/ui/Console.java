@@ -46,7 +46,7 @@ public class Console {
 
 			case 1:
 				System.out.print(
-						"1 um Kunde hinzuzufuegen, 2 um Medium hinzuzufuegen, 3 um eine Adresse zu Aendern, 4 um Kunde anzuzeigen, 5 um Medium anzuzeigen.");
+						"1 um Kunde hinzuzufuegen, 2 um Medium hinzuzufuegen, 3 um eine Adresse zu Aendern, 4 um Kunde anzuzeigen, 5 um Medium anzuzeigen, 6 um Medium auszuleihen/zurückgeben.");
 				aufgabe = sc.nextInt();
 				switch (aufgabe) {
 				case 1:
@@ -77,7 +77,7 @@ public class Console {
 				break;
 
 			case 2:
-				System.out.print("1 um ein Medium auszuleihen");
+				System.out.print("1 um ein Medium auszuleihen/zurückgeben.");
 				aufgabe = sc.nextInt();
 				// eigentlich sinnlos ein Switch-Case zu machen. Jedoch könnte
 				// man es so noch einfach erweitern
